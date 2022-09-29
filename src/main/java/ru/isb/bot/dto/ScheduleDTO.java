@@ -15,8 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@JsonDeserialize
-@JsonSerialize
 public class ScheduleDTO implements Serializable {
 
     private String building_id;
