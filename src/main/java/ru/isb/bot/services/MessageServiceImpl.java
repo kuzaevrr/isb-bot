@@ -1,7 +1,13 @@
 package ru.isb.bot.services;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -14,6 +20,7 @@ import ru.isb.bot.utils.MessageUtils;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -29,12 +36,10 @@ public class MessageServiceImpl implements MessageService{
     public String getJsonClient() throws IOException, InterruptedException {
         Response response = client.getTimetableOfClasses(new Date(2022,9,26), new Date(2022,10,6));
         if (response.body() != null) {
-            GsonBuilder builder = new GsonBuilder();
-            builder.setPrettyPrinting();
-
-            Gson gson = builder.create();
+            Gson gson = new GsonBuilder()
+                    .setPrettyPrinting()
+                    .create();
             List<ScheduleDTO> schedules = gson.fromJson(response.body().string(), new TypeToken<ArrayList<ScheduleDTO>>() {}.getType());
-
             return MessageUtils.formatMessage(schedules);
         }
         return null;

@@ -1,6 +1,5 @@
 package ru.isb.bot.utils;
 
-import org.telegram.telegrambots.meta.generics.TelegramBot;
 import ru.isb.bot.dto.ScheduleDTO;
 
 import java.util.*;
