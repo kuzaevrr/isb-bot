@@ -9,6 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.isb</groupId>
+    <packaging>jar</packaging>
     <artifactId>bot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>isb-bot</name>
