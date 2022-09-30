@@ -2,6 +2,7 @@ package ru.isb.bot.enums;
 
 public enum Commands {
 
+    STOP_SERVER("/stopServer"),
     SCHEDULE("/schedule"),
     SCHEDULE_GROUP("/schedule@ISBNotPiBot");
 
