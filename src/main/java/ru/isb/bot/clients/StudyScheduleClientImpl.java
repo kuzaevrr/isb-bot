@@ -4,11 +4,9 @@ import lombok.extern.log4j.Log4j2;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import ru.isb.bot.utils.DateUtils;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 @Log4j2

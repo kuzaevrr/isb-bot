@@ -2,8 +2,6 @@ package ru.isb.bot.utils;
 
 import ru.isb.bot.dto.ScheduleDTO;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.*;
 
 public class MessageUtils {

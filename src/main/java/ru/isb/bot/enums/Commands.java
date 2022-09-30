@@ -1,7 +1,5 @@
 package ru.isb.bot.enums;
 
-import org.springframework.beans.factory.annotation.Value;
-
 public enum Commands {
 
     SCHEDULE("/schedule"),
