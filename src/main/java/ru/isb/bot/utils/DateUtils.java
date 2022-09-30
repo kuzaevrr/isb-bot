@@ -6,23 +6,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.TimeZone;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Log4j2
 public class DateUtils {
 
-    private static final Integer PAIR_DURATION = 95;
-    private static final String REGEXP = "[0-9][0-9]\\.[0-9][0-9]\\.[0-9][0-9][0-9][0-9]";
-
-    public static String dateFormatDDMMYYYY(Date date) {
-        return String.format("%s.%s.%s",
-                String.valueOf(date.getDay()).length() < 2 ? "0" + date.getDay() : date.getDay(),
-                String.valueOf(date.getMonth()).length() < 2 ? "0" + date.getMonth() : date.getMonth(),
-                date.getYear());
-    }
+    private static final Integer PAIR_DURATION = 90;
 
     public static String calcTimeDiscipline(String startTime) {
         SimpleDateFormat df = new SimpleDateFormat("HH:mm"); //df.parse(startTime)
@@ -34,7 +23,7 @@ public class DateUtils {
             cal.add(Calendar.MINUTE, PAIR_DURATION);
             Date endDate = cal.getTime();
 
-            return String.format("c %s:%s по %s:%s",
+            return String.format("%s:%s - %s:%s",
                     startDate.getHours(),
                     String.valueOf(startDate.getMinutes()).length() < 2 ? "0" + startDate.getMinutes() : startDate.getMinutes(),
                     endDate.getHours(),

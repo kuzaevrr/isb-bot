@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import ru.isb.bot.utils.DateUtils;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +21,7 @@ public class StudyScheduleClientImpl implements StudyScheduleClient {
     private String STREAM_ID;
 
     @Override
-    public Response getTimetableOfClasses(Date startDate, Date endDate) {
+    public Response getTimetableOfClasses(LocalDate startDate, LocalDate endDate) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
@@ -29,14 +30,19 @@ public class StudyScheduleClientImpl implements StudyScheduleClient {
 
         RequestBody requestBody = RequestBody.create(TEXT,
                                                      String.format("stream_id=%s&term=2&date_start=%s&date_end=%s",
-                                                             STREAM_ID, DateUtils.dateFormatDDMMYYYY(startDate), DateUtils.dateFormatDDMMYYYY(endDate)));
+                                                             STREAM_ID,
+                                                             startDate,
+                                                             endDate
+                                                     ));
         Request request = new Request.Builder()
-//                .header("EIS-PROCESSING-SERVICE-TOKEN", SERVICE_TOKEN)
                 .url("https://pgsha.ru/sys/shedule/getsheduleclasseszo")
                 .post(requestBody)
                 .build();
+
         log.info(String.format("stream_id=%s&term=2&date_start=%s&date_end=%s",
-                STREAM_ID, DateUtils.dateFormatDDMMYYYY(startDate), DateUtils.dateFormatDDMMYYYY(endDate)));
+                STREAM_ID,
+                startDate,
+                endDate));
         try {
             return client.newCall(request).execute();
         } catch (IOException e) {

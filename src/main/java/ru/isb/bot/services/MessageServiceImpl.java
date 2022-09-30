@@ -19,6 +19,7 @@ import ru.isb.bot.dto.ScheduleDTO;
 import ru.isb.bot.utils.MessageUtils;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -33,8 +34,10 @@ public class MessageServiceImpl implements MessageService{
 
 
     @Override
-    public String getJsonClient() throws IOException, InterruptedException {
-        Response response = client.getTimetableOfClasses(new Date(2022,9,26), new Date(2022,10,6));
+    public String getSchedulesWeek() throws IOException, InterruptedException {
+        LocalDate date = LocalDate.now();
+        LocalDate endDate = LocalDate.now().plusDays(10);
+        Response response = client.getTimetableOfClasses(date, endDate);
         if (response.body() != null) {
             Gson gson = new GsonBuilder()
                     .setPrettyPrinting()
