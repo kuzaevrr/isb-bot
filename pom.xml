@@ -11,7 +11,7 @@
     <groupId>ru.isb</groupId>
     <packaging>jar</packaging>
     <artifactId>bot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <name>isb-bot</name>
     <description>isb-bot</description>
     <properties>

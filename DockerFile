@@ -1,0 +1,7 @@
+FROM java
+
+WORKDIR /app
+
+copy ..
+
+CMD["mvn clean install", "cd /target", "java -jar bot-1.0.jar"]

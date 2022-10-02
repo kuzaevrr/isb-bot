@@ -17,7 +17,9 @@ public class MessageUtils {
                 stringBuilder.append("<pre><b>").append(DateUtils.calcTimeDiscipline(value.getDaytime_name())).append(" ").append("</b></pre>");
                 stringBuilder.append("<b>").append(value.getCabinet_fullnumber_wotype()).append("</b>").append(" ");
                 stringBuilder.append(value.getDiscipline_name()).append(" ");
-                stringBuilder.append("(").append(value.getTeacher_fio()).append(") ");
+                if (value.getTeacher_fio() != null) {
+                    stringBuilder.append("(").append(value.getTeacher_fio()).append(") ");
+                }
                 stringBuilder.append("\n");
             });
             stringBuilder.append("\n");
