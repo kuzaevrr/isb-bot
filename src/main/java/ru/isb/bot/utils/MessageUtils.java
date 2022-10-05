@@ -41,7 +41,7 @@ public class MessageUtils {
             }
         });
         resultDate.forEach((k,v) -> {
-            v.sort(Comparator.comparing(ScheduleDTO::getDaytime_name));
+            v.sort(Comparator.comparing(scheduleDTO -> Integer.parseInt(scheduleDTO.getDaytime_name().split(":")[0])));
         });
         return resultDate;
     }
