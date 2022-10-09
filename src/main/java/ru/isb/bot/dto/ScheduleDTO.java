@@ -28,7 +28,7 @@ public class ScheduleDTO implements Serializable {
 //    private String cabinet_type_name;
 //    private Integer classtype_id;
 //    private String classtype_name;
-//    private String classtype_short;
+    private String classtype_short;
     private Date date_end;
     private String date_end_text;
     private Date date_start;

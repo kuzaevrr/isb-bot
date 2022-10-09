@@ -20,6 +20,7 @@ public class MessageUtils {
                 if (value.getTeacher_fio() != null) {
                     stringBuilder.append("(").append(value.getTeacher_fio()).append(") ");
                 }
+                stringBuilder.append("(").append(value.getClasstype_short()).append(")");
                 stringBuilder.append("\n");
             });
             stringBuilder.append("\n");
