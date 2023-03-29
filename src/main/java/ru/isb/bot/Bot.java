@@ -22,7 +22,7 @@ public class Bot extends TelegramLongPollingBot {
     private String botUsername;
     @Value("${bot.token}")
     private String botToken;
-    @Value("${bot.test.chat.id}")
+    @Value("${bot.isb.chat.id}")
     private String ISB_CHAT_ID;
 
 
