@@ -36,13 +36,19 @@ public class Bot extends TelegramLongPollingBot {
         try {
             if (update.hasMessage()) {
                 if (update.getMessage().getText() != null) {
-                    if (Commands.SCHEDULE_GROUP.getCommand().equals(update.getMessage().getText()) ||
-                        Commands.SCHEDULE.getCommand().equals(update.getMessage().getText())) {
-                        execute(
+                    switch (Commands.valueOf(update.getMessage().getText())) {
+                        case SCHEDULE_GROUP, SCHEDULE -> execute(
                                 sendMessage(
                                         messageService.getSchedulesWeek(),
                                         update.getMessage().getChatId()
                                 ));
+                        case LIST_GROUP, LIST -> execute(
+                                sendMessage(
+                                        messageService.getListGroup(),
+                                        update.getMessage().getChatId()
+                                ));
+                        default -> {
+                        }
                     }
                 }
             }

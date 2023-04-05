@@ -1,20 +1,21 @@
 package ru.isb.bot.enums;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public enum Commands {
 
     STOP_SERVER("/stopServer"),
     SCHEDULE("/schedule"),
-    SCHEDULE_GROUP("/schedule@ISBNotPiBot");
+    SCHEDULE_GROUP("/schedule@ISBNotPiBot"),
 
-    private String command;
+    LIST("/list"),
+    LIST_GROUP("/list@ISBNotPiBot");
 
-    Commands(String command) {
-        this.command = command;
-    }
+    private final String command;
 
-
-
-    public String getCommand() {
-        return command;
+    @Override
+    public String toString() {
+        return this.command;
     }
 }

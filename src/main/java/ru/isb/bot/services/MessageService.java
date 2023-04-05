@@ -5,4 +5,6 @@ import java.io.IOException;
 public interface MessageService {
 
     String getSchedulesWeek() throws IOException, InterruptedException, ClassNotFoundException;
+
+    String getListGroup();
 }
