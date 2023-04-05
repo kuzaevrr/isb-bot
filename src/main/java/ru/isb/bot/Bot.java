@@ -1,6 +1,7 @@
 package ru.isb.bot;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import ru.isb.bot.services.MessageServiceImpl;
 @Log4j2
 @Component
 @Getter
+@RequiredArgsConstructor
 public class Bot extends TelegramLongPollingBot {
 
     @Value("${bot.name}")
@@ -25,9 +27,7 @@ public class Bot extends TelegramLongPollingBot {
     @Value("${bot.isb.chat.id}")
     private String ISB_CHAT_ID;
 
-
-    @Autowired
-    MessageServiceImpl messageService;
+    private final MessageServiceImpl messageService;
 
 
     @SneakyThrows

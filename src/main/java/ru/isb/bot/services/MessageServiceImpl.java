@@ -3,6 +3,7 @@ package ru.isb.bot.services;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import lombok.RequiredArgsConstructor;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,10 +20,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Service
+@RequiredArgsConstructor
 public class MessageServiceImpl implements MessageService{
 
-    @Autowired
-    StudyScheduleClient client;
+    private final StudyScheduleClient client;
 
     private List<String> list = Arrays.asList("Андреев Р.Н.",
             "Буркова П.В.",
