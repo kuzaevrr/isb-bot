@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Service
@@ -51,7 +52,7 @@ public class MessageServiceImpl implements MessageService{
     public String getListGroup() {
         StringBuilder sb = new StringBuilder();
         list.sort(String::compareTo);
-        return IntStream.range(0, list.size())
-                .mapToObj(i -> i + 1 + ") " + list.get(i) + "\n").findAny().get();
+        return "<b>Список группы: </b>\n" + IntStream.range(0, list.size())
+                .mapToObj(i -> i + 1 + ") " + list.get(i) + "\n").collect(Collectors.joining());
     }
 }
