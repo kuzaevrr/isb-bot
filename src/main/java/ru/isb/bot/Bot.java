@@ -36,7 +36,7 @@ public class Bot extends TelegramLongPollingBot {
         try {
             if (update.hasMessage()) {
                 if (update.getMessage().getText() != null) {
-                    switch (Commands.valueOf(update.getMessage().getText())) {
+                    switch (Commands.fromString(update.getMessage().getText())) {
                         case SCHEDULE_GROUP, SCHEDULE -> execute(
                                 sendMessage(
                                         messageService.getSchedulesWeek(),
