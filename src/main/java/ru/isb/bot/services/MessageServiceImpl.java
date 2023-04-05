@@ -50,7 +50,6 @@ public class MessageServiceImpl implements MessageService{
 
     @Override
     public String getListGroup() {
-        StringBuilder sb = new StringBuilder();
         list.sort(String::compareTo);
         return "<b>Список группы: </b>\n" + IntStream.range(0, list.size())
                 .mapToObj(i -> i + 1 + ") " + list.get(i) + "\n").collect(Collectors.joining());
