@@ -32,7 +32,8 @@ public class MessageServiceImpl implements MessageService{
             "Кузаев Р.Р.",
             "Маркин К.А.",
             "Сидякин И.О.",
-            "Тебеньков В.А.");
+            "Тебеньков В.А.",
+            "Забрудский А.В.");
 
     @Override
     public String getSchedulesWeek() throws IOException, InterruptedException {
