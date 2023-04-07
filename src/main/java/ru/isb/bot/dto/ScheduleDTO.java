@@ -43,7 +43,7 @@ public class ScheduleDTO implements Serializable {
 //    private String group_name;
 //    private String id;
 //    private Boolean is_exam;
-//    private String notes;
+    private String notes;
 //    private Integer ratetype_id;
 //    private Integer stream_id;
 //    private String stream_name;
