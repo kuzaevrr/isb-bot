@@ -10,22 +10,25 @@ public class MessageUtils {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("<b>Расписание занятий!</b>").append("\n");
         Map<Long, List<ScheduleDTO>> mapSchedules = parseDTO(scheduleDTOs);
-
-        mapSchedules.forEach((k,v) -> {
-            stringBuilder.append("<b>").append(mapSchedules.get(k).get(0).getWeekday_name()).append(" ").append(mapSchedules.get(k).get(0).getDate_start_text()).append("</b>").append("\n");
-            v.forEach(value -> {
-                stringBuilder.append("<pre><b>").append(DateUtils.calcTimeDiscipline(value.getDaytime_name())).append(" ").append("</b></pre>");
-                stringBuilder.append("<b>").append(value.getCabinet_fullnumber_wotype()).append("</b>").append(" ");
-                stringBuilder.append(value.getDiscipline_name()).append(" ");
-                if (value.getTeacher_fio() != null) {
-                    stringBuilder.append("(").append(value.getTeacher_fio()).append(") ");
-                }
-                stringBuilder.append("(").append(value.getNotes() != null && !value.getNotes().equals(".") ? value.getNotes() + "!" : value.getClasstype_short()).append(")");
+        System.out.println(mapSchedules.size());
+        if (mapSchedules != null && !mapSchedules.isEmpty()) {
+            mapSchedules.forEach((k, v) -> {
+                stringBuilder.append("<b>").append(mapSchedules.get(k).get(0).getWeekday_name()).append(" ").append(mapSchedules.get(k).get(0).getDate_start_text()).append("</b>").append("\n");
+                v.forEach(value -> {
+                    stringBuilder.append("<pre><b>").append(DateUtils.calcTimeDiscipline(value.getDaytime_name())).append(" ").append("</b></pre>");
+                    stringBuilder.append("<b>").append(value.getCabinet_fullnumber_wotype()).append("</b>").append(" ");
+                    stringBuilder.append(value.getDiscipline_name()).append(" ");
+                    if (value.getTeacher_fio() != null) {
+                        stringBuilder.append("(").append(value.getTeacher_fio()).append(") ");
+                    }
+                    stringBuilder.append("(").append(value.getNotes() != null && !value.getNotes().equals(".") ? value.getNotes() + "!" : value.getClasstype_short()).append(")");
+                    stringBuilder.append("\n");
+                });
                 stringBuilder.append("\n");
             });
-            stringBuilder.append("\n");
-        });
-
+        } else {
+            stringBuilder.append("Расписание нет! ").append("Разработчик не виновен, бейте палкой того кто составляет расписание :D");
+        }
         return stringBuilder.toString();
     }
 
