@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -47,6 +46,12 @@ public class Bot extends TelegramLongPollingBot {
                                         messageService.getListGroup(),
                                         update.getMessage().getChatId()
                                 ));
+                        case ALL -> execute(
+                                sendMessage(
+                                        "@elektrik_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @Va1er1ev1ch @vladka_teb @Полина @Desert567",
+                                        update.getMessage().getChatId()
+                                )
+                        );
                         default -> {
                         }
                     }
