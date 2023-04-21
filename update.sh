@@ -1,11 +1,11 @@
 #!/bin/bash
-# shellcheck disable=SC2154
-echo "${bold}[INFO] RUN UPDATE -> SUCCESS";
+# https://mb4.ru/programming/bash/853-colors-for-bash.html
+echo "${BOLD}[INFO] ${RED}RUN UPDATE -> ${GREEN}SUCCESS";
 systemctl stop isb-bot;
-echo "${bold}[INFO] STOP - BOT -> SUCCESS";
+echo "${BOLD}[INFO] ${RED}STOP - BOT -> ${GREEN}SUCCESS";
 git pull;
-echo "${bold}[INFO] GIT PULL -> SUCCESS";
+echo "${BOLD}[INFO] ${RED}GIT PULL -> ${GREEN}SUCCESS";
 mvn clean install -Dmaven.test.skip;
-echo "${bold}[INFO] MAVEN -> SUCCESS";
+echo "${BOLD}[INFO] ${RED}MAVEN -> ${GREEN}SUCCESS";
 systemctl start isb-bot;
-echo "${bold}[INFO] START BOT -> SUCCESS";
+echo "${BOLD}[INFO] ${RED}START BOT -> ${GREEN}SUCCESS";
