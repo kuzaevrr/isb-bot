@@ -48,7 +48,7 @@ public class Bot extends TelegramLongPollingBot {
                                 ));
                         case ALL -> execute(
                                 sendMessage(
-                                        "@elektrik_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @Va1er1ev1ch @vladka_teb @Полина @Desert567",
+                                        "@elektrik_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @Va1er1ev1ch @vladka_teb @polibuu @Desert567",
                                         update.getMessage().getChatId()
                                 )
                         );
