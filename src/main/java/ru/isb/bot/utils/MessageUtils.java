@@ -35,18 +35,22 @@ public class MessageUtils {
     private static Map<Long, List<ScheduleDTO>> parseDTO(List<ScheduleDTO> scheduleDTOs) {
         Map<Long, List<ScheduleDTO>> resultDate = new TreeMap<>();
 
-        scheduleDTOs.forEach(scheduleDTO -> {;
-            if (resultDate.containsKey(scheduleDTO.getDate_start().getTime())) {
-                resultDate.get(scheduleDTO.getDate_start().getTime()).add(scheduleDTO);;
-            } else {
-                List<ScheduleDTO> list = new ArrayList<>();
-                list.add(scheduleDTO);
-                resultDate.put(scheduleDTO.getDate_start().getTime(), list);
-            }
-        });
-        resultDate.forEach((k,v) -> {
-            v.sort(Comparator.comparing(scheduleDTO -> Integer.parseInt(scheduleDTO.getDaytime_name().split(":")[0])));
-        });
+        if (scheduleDTOs != null) {
+            scheduleDTOs.forEach(scheduleDTO -> {
+                ;
+                if (resultDate.containsKey(scheduleDTO.getDate_start().getTime())) {
+                    resultDate.get(scheduleDTO.getDate_start().getTime()).add(scheduleDTO);
+                    ;
+                } else {
+                    List<ScheduleDTO> list = new ArrayList<>();
+                    list.add(scheduleDTO);
+                    resultDate.put(scheduleDTO.getDate_start().getTime(), list);
+                }
+            });
+            resultDate.forEach((k, v) -> {
+                v.sort(Comparator.comparing(scheduleDTO -> Integer.parseInt(scheduleDTO.getDaytime_name().split(":")[0])));
+            });
+        }
         return resultDate;
     }
 }

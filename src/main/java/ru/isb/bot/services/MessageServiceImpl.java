@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static ru.isb.bot.clients.StudyScheduleClientImpl.URL;
+
 @Service
 @RequiredArgsConstructor
 public class MessageServiceImpl implements MessageService{
@@ -40,13 +42,22 @@ public class MessageServiceImpl implements MessageService{
         LocalDate date = LocalDate.now();
         LocalDate endDate = LocalDate.now().plusDays(10);
         Response response = client.getTimetableOfClasses(date, endDate);
-        if (response.body() != null) {
-            Gson gson = new GsonBuilder()
-                    .setPrettyPrinting()
-                    .create();
-            List<ScheduleDTO> schedules = gson.fromJson(response.body().string(), new TypeToken<ArrayList<ScheduleDTO>>() {}.getType());
-            return MessageUtils.formatMessage(schedules);
+        if (response.isSuccessful()) {
+            if (response.body() != null) {
+                Gson gson = new GsonBuilder()
+                        .setPrettyPrinting()
+                        .create();
+                List<ScheduleDTO> schedules = gson.fromJson(response.body().string(), new TypeToken<ArrayList<ScheduleDTO>>() {}.getType());
+                return MessageUtils.formatMessage(schedules);
+            }
+        } else {
+            return "<b>Ошибка на стороне сервера ПГАТУ!</b>" +
+                    "\nURL: " + URL +
+                    "\nКод ошибки: " + response.code() +
+                    (response.body() != null ? "\nТекст ошибки: " + response.body().string() : null) +
+                    "\n<b>Необходимо написать Мелехину Максиму Игоревичу на учебном портале.</b>";
         }
+
         return null;
     }
 
