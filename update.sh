@@ -1,10 +1,10 @@
 #!/bin/bash
-echo "Start update isb-bot";
+echo "[INFO] RUN UPDATE -> SUCCESS";
 systemctl stop isb-bot;
-echo "systemctl stop isb-bot -> success";
+echo "[INFO] STOP - BOT -> SUCCESS";
 git pull;
-echo "git pull -> success";
+echo "[INFO] GIT PULL -> SUCCESS";
 mvn clean install -Dmaven.test.skip;
-echo "mvn clean install -Dmaven.test.skip -> success";
+echo "[INFO] MAVEN -> SUCCESS";
 systemctl start isb-bot;
-echo "systemctl start isb-bot -> success";
+echo "[INFO] START BOT -> SUCCESS";
