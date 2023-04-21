@@ -11,7 +11,9 @@ public enum Commands {
 
     LIST("/list"),
     LIST_GROUP("/list@ISBNotPiBot"),
+    ALL_LINK("@all"),
     ALL("/all"),
+    ALL_GROUP("/all@ISBNotPiBot"),
     NO_COMMAND(null);
 
     private final String command;
