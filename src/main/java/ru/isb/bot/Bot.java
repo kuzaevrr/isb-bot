@@ -46,7 +46,7 @@ public class Bot extends TelegramLongPollingBot {
                                         messageService.getListGroup(),
                                         update.getMessage().getChatId()
                                 ));
-                        case ALL -> execute(
+                        case ALL, ALL_GROUP, ALL_LINK -> execute(
                                 sendMessage(
                                         "@elektrik_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @Va1er1ev1ch @vladka_teb @polibuu @Desert567",
                                         update.getMessage().getChatId()
