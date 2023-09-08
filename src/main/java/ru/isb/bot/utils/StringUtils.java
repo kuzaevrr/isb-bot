@@ -2,7 +2,7 @@ package ru.isb.bot.utils;
 
 public class StringUtils {
 
-    private static final String COPY_POSTFIX = " (копия)";
+    private static final String COPY_POSTFIX = "(копия)";
 
     public static String copyFileName(String fileName) {
         String [] prefixAndPostfix = fileName.split("\\.");
