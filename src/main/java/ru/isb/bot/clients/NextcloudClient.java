@@ -11,6 +11,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import ru.isb.bot.utils.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,45 +36,55 @@ public class NextcloudClient {
 
     @SneakyThrows
     public void uploadFile(File file, String fileName) {
-
-        fileName = fileName.replace(" ", "_");
+        fileName = StringUtils.replaceSpace(fileName);
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             HttpPut request = new HttpPut(NEXTCLOUD_HOST + NEXTCLOUD_URL_PATH + NEXTCLOUD_PATH_TO_FILE + "/" + fileName);
-            
-            // Set username and password for authentication
-            String credentials = NEXTCLOUD_USER_NAME + ":" + NEXTCLOUD_USER_PASS;
-            String encodedCredentials = Base64.getEncoder().encodeToString(credentials.getBytes());
-            request.addHeader("Authorization", "Basic " + encodedCredentials);
-
-            // Create the file entity
-            FileEntity fileEntity = new FileEntity(file, ContentType.DEFAULT_BINARY);
-            request.setEntity(fileEntity);
+            String encodedCredentials = createCredentials(request);
+            FileEntity fileEntity = createEntityFile(request, file);
 
             try (CloseableHttpResponse response = httpClient.execute(request)) {
                 StatusLine statusLine = response.getStatusLine();
                 int statusCode = statusLine.getStatusCode();
-                System.out.println("File upload status code: " + statusCode);
-                
-                // Handle redirects
-                if (statusCode == 302) {
-                    String redirectUrl = response.getFirstHeader("Location").getValue();
-                    System.out.println("Redirect URL: " + redirectUrl);
-                    
-                    // Execute a new request to the redirect URL
-                    HttpPut redirectRequest = new HttpPut(redirectUrl);
-                    redirectRequest.addHeader("Authorization", "Basic " + encodedCredentials);
-                    redirectRequest.setEntity(fileEntity);
-                    
-                    try (CloseableHttpResponse redirectResponse = httpClient.execute(redirectRequest)) {
-                        StatusLine redirectStatusLine = redirectResponse.getStatusLine();
-                        int redirectStatusCode = redirectStatusLine.getStatusCode();
-                        System.out.println("Redirect status code: " + redirectStatusCode);
-                    }
+                log.info("File upload status code: " + statusCode);
+
+                if (statusCode == 204) {
+                    uploadFile(file, StringUtils.copyFileName(fileName));
+                } else if (statusCode == 302) {
+                    redirect(response, fileEntity, encodedCredentials, httpClient);
                 }
             }
         } catch (IOException ex) {
-            ex.printStackTrace();
+            log.error(ex.getMessage(), ex);
         }
+    }
+
+    @SneakyThrows
+    private void redirect(CloseableHttpResponse response, FileEntity fileEntity, String encodedCredentials, CloseableHttpClient httpClient) {
+        String redirectUrl = response.getFirstHeader("Location").getValue();
+        log.info("Redirect URL: " + redirectUrl);
+
+        HttpPut redirectRequest = new HttpPut(redirectUrl);
+        redirectRequest.addHeader("Authorization", "Basic " + encodedCredentials);
+        redirectRequest.setEntity(fileEntity);
+
+        try (CloseableHttpResponse redirectResponse = httpClient.execute(redirectRequest)) {
+            StatusLine redirectStatusLine = redirectResponse.getStatusLine();
+            int redirectStatusCode = redirectStatusLine.getStatusCode();
+            log.info("Redirect status code: " + redirectStatusCode);
+        }
+    }
+
+    private String createCredentials(HttpPut request) {
+        String credentials = NEXTCLOUD_USER_NAME + ":" + NEXTCLOUD_USER_PASS;
+        String encodedCredentials = Base64.getEncoder().encodeToString(credentials.getBytes());
+        request.addHeader("Authorization", "Basic " + encodedCredentials);
+        return encodedCredentials;
+    }
+
+    private FileEntity createEntityFile(HttpPut request, File file) {
+        FileEntity fileEntity = new FileEntity(file, ContentType.DEFAULT_BINARY);
+        request.setEntity(fileEntity);
+        return fileEntity;
     }
 }
