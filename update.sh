@@ -7,5 +7,5 @@ git pull;
 echo "${BOLD}[INFO] ${RED}GIT PULL -> ${GREEN}SUCCESS";
 mvn clean install -Dmaven.test.skip;
 echo "${BOLD}[INFO] ${RED}MAVEN -> ${GREEN}SUCCESS";
-systemctl start isb-bot;
+systemctl restart isb-bot;
 echo "${BOLD}[INFO] ${RED}START BOT -> ${GREEN}SUCCESS";
