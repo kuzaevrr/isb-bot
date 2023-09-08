@@ -12,7 +12,6 @@ import org.telegram.telegrambots.meta.api.methods.ParseMode;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.isb.bot.clients.NextcloudClient;
 import ru.isb.bot.enums.Commands;
 import ru.isb.bot.services.MessageServiceImpl;
