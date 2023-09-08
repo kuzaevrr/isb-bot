@@ -7,11 +7,17 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.GetFile;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import ru.isb.bot.clients.NextcloudClient;
 import ru.isb.bot.enums.Commands;
 import ru.isb.bot.services.MessageServiceImpl;
+
+import java.io.File;
 
 @Log4j2
 @Component
@@ -27,14 +33,14 @@ public class Bot extends TelegramLongPollingBot {
     private String ISB_CHAT_ID;
 
     private final MessageServiceImpl messageService;
-
+    private final NextcloudClient nextcloudClient;
 
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
         try {
             if (update.hasMessage()) {
-                if (update.getMessage().getText() != null) {
+                if (update.getMessage().hasText()) {
                     switch (Commands.fromString(update.getMessage().getText())) {
                         case SCHEDULE_GROUP, SCHEDULE -> execute(
                                 sendMessage(
@@ -55,17 +61,20 @@ public class Bot extends TelegramLongPollingBot {
                         default -> {
                         }
                     }
+                } else if (update.getMessage().hasDocument()) {
+                    Document document = update.getMessage().getDocument();
+                    try {
+                        File file = downloadFile(execute(new GetFile(document.getFileId())).getFilePath());
+                        nextcloudClient.uploadFile(file, document.getFileName());
+                    } catch (Exception e) {
+                        log.error(e.getMessage(), e);
+                        sendMessageException(e, update);
+                    }
                 }
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-
-            execute(
-                    sendMessage(
-                            e.toString(),
-                            update.getMessage().getChatId()
-                    ));
-            e.printStackTrace();
+            sendMessageException(e, update);
         }
     }
 
@@ -74,7 +83,14 @@ public class Bot extends TelegramLongPollingBot {
         sendMessage.setParseMode(ParseMode.HTML);
         sendMessage.setText(text);
         sendMessage.setChatId(chatId.toString());
-
         return sendMessage;
     }
+
+    @SneakyThrows
+    private void sendMessageException(Exception e, Update update) {
+        execute(
+                sendMessage(e.toString(), update.getMessage().getChatId())
+        );
+    }
+
 }
