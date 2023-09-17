@@ -12,6 +12,7 @@ import org.telegram.telegrambots.meta.api.methods.ParseMode;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.isb.bot.clients.ChatGPTClient;
 import ru.isb.bot.clients.NextcloudClient;
 import ru.isb.bot.enums.Commands;
 import ru.isb.bot.services.MessageServiceImpl;
@@ -33,6 +34,9 @@ public class Bot extends TelegramLongPollingBot {
 
     private final MessageServiceImpl messageService;
     private final NextcloudClient nextcloudClient;
+    private final ChatGPTClient gptClient;
+
+    private static final String MESSAGE_GPT_SPLIT = "GPT -> ";
 
     @SneakyThrows
     @Override
@@ -57,8 +61,13 @@ public class Bot extends TelegramLongPollingBot {
                                         update.getMessage().getChatId()
                                 )
                         );
-                        default -> {
-                        }
+                    }
+                    if (update.getMessage().getText().contains(MESSAGE_GPT_SPLIT)) {
+                        String message = update.getMessage().getText().split(MESSAGE_GPT_SPLIT)[1];
+                        sendMessage(
+                                gptClient.getAnswerGPT(message),
+                                update.getMessage().getChatId()
+                        );
                     }
                 } else if (update.getMessage().hasDocument()) {
                     Document document = update.getMessage().getDocument();
