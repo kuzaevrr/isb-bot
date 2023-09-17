@@ -60,9 +60,15 @@ public class Bot extends TelegramLongPollingBot {
                         );
                     }
                     if (update.getMessage().getText().contains(MESSAGE_GPT_SPLIT)) {
-                        String message = update.getMessage().getText().split(MESSAGE_GPT_SPLIT)[1];
+                        String messageAnswer = gptClient.getAnswerGPT(update.getMessage().getText().split(MESSAGE_GPT_SPLIT)[1]);
+                        messageAnswer = messageAnswer.replaceAll("<", "&lt;")
+                                .replaceAll(">", "&gt;")
+                                .replaceAll("!", "&#33;")
+                                .replaceFirst("```", "<pre>")
+                                .replaceFirst("```", "</pre>");
+
                         executeMessages(
-                                gptClient.getAnswerGPT(message),
+                                messageAnswer,
                                 update.getMessage().getChatId()
                         );
                     }
@@ -84,12 +90,6 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     private void executeMessages(String message, Long chatId) {
-        log.info(message);
-        message = message.replaceAll("<", "&lt;")
-                .replaceAll(">", "&gt;")
-                .replaceAll("!", "&#33;")
-                .replaceFirst("```", "<pre>")
-                .replaceFirst("```", "</pre>");
         MessageUtils.textSplitter(message).forEach(message4096 -> {
             try {
                 execute(
