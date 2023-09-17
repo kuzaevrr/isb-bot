@@ -32,7 +32,7 @@ public class ChatGPTClientImpl implements ChatGPTClient {
         // Создать HttpRequest с методом POST и установить заголовки
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(new URI("https://api.openai.com/v1/chat/completions"))
-                .POST(HttpRequest.BodyPublishers.ofString(JsonUtils.parseObjectToString(new ChatGPTSenderDTO())))
+                .POST(HttpRequest.BodyPublishers.ofString(JsonUtils.parseObjectToString(chatGPTSenderDTO)))
                 .header("Authorization", "Bearer " + apiKey)
                 .header("Content-Type", "application/json")
                 .build();
