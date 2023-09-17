@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class StudyScheduleClientImpl implements StudyScheduleClient {
 
-    public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     public static final MediaType TEXT = MediaType.get("application/x-www-form-urlencoded; charset=UTF-8");
     public final static String URL = "https://pgsha.ru/sys/shedule/getsheduleclasseszo";
 

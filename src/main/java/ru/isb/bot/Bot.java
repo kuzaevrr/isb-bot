@@ -16,6 +16,7 @@ import ru.isb.bot.clients.ChatGPTClient;
 import ru.isb.bot.clients.NextcloudClient;
 import ru.isb.bot.enums.Commands;
 import ru.isb.bot.services.MessageServiceImpl;
+import ru.isb.bot.utils.MessageUtils;
 
 import java.io.File;
 
@@ -45,26 +46,22 @@ public class Bot extends TelegramLongPollingBot {
             if (update.hasMessage()) {
                 if (update.getMessage().hasText()) {
                     switch (Commands.fromString(update.getMessage().getText())) {
-                        case SCHEDULE_GROUP, SCHEDULE -> execute(
-                                sendMessage(
-                                        messageService.getSchedulesWeek(),
-                                        update.getMessage().getChatId()
-                                ));
-                        case LIST_GROUP, LIST -> execute(
-                                sendMessage(
-                                        messageService.getListGroup(),
-                                        update.getMessage().getChatId()
-                                ));
-                        case ALL, ALL_GROUP, ALL_LINK -> execute(
-                                sendMessage(
-                                        "@elektrik_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @Va1er1ev1ch @vladka_teb @polibuu @Desert567",
-                                        update.getMessage().getChatId()
-                                )
+                        case SCHEDULE_GROUP, SCHEDULE -> executeMessages(
+                                messageService.getSchedulesWeek(),
+                                update.getMessage().getChatId()
+                        );
+                        case LIST_GROUP, LIST -> executeMessages(
+                                messageService.getListGroup(),
+                                update.getMessage().getChatId()
+                        );
+                        case ALL, ALL_GROUP, ALL_LINK -> executeMessages(
+                                "@elektrik_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @Va1er1ev1ch @vladka_teb @polibuu @Desert567",
+                                update.getMessage().getChatId()
                         );
                     }
                     if (update.getMessage().getText().contains(MESSAGE_GPT_SPLIT)) {
                         String message = update.getMessage().getText().split(MESSAGE_GPT_SPLIT)[1];
-                        sendMessage(
+                        executeMessages(
                                 gptClient.getAnswerGPT(message),
                                 update.getMessage().getChatId()
                         );
@@ -76,14 +73,36 @@ public class Bot extends TelegramLongPollingBot {
                         nextcloudClient.uploadFile(file, document.getFileName());
                     } catch (Exception e) {
                         log.error(e.getMessage(), e);
-                        sendMessageException(e, update);
+                        sendMessageException(e, update.getMessage().getChatId());
                     }
                 }
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            sendMessageException(e, update);
+            sendMessageException(e, update.getMessage().getChatId());
         }
+    }
+
+    private void executeMessages(String message, Long chatId) {
+        log.info(message);
+        message = message.replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll("!", "&#33;")
+                .replaceFirst("```", "<pre>")
+                .replaceFirst("```", "</pre>");
+        MessageUtils.textSplitter(message).forEach(message4096 -> {
+            try {
+                execute(
+                        sendMessage(
+                                message4096,
+                                chatId
+                        )
+                );
+            } catch (Exception e) {
+                log.error(e.getMessage(), e);
+                sendMessageException(e, chatId);
+            }
+        });
     }
 
     private SendMessage sendMessage(String text, Long chatId) {
@@ -95,9 +114,9 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     @SneakyThrows
-    private void sendMessageException(Exception e, Update update) {
+    private void sendMessageException(Exception e, Long chatId) {
         execute(
-                sendMessage(e.toString(), update.getMessage().getChatId())
+                sendMessage(e.toString(), chatId)
         );
     }
 

@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import lombok.RequiredArgsConstructor;
 import okhttp3.Response;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.isb.bot.clients.StudyScheduleClient;
 import ru.isb.bot.dto.ScheduleDTO;
@@ -27,7 +26,7 @@ public class MessageServiceImpl implements MessageService{
 
     private final StudyScheduleClient client;
 
-    private List<String> list = Arrays.asList("Андреев Р.Н.",
+    private final List<String> list = Arrays.asList("Андреев Р.Н.",
             "Буркова П.В.",
             "Кетов А.А.",
             "Колышкин Ю.А.",
