@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.GetFile;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
+import org.telegram.telegrambots.meta.api.methods.send.SendChatAction;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -60,6 +61,7 @@ public class Bot extends TelegramLongPollingBot {
                         );
                     }
                     if (update.getMessage().getText().contains(MESSAGE_GPT_SPLIT)) {
+                        execute(new SendChatAction(String.valueOf(update.getMessage().getChatId()), "TYPING", (int) Thread.currentThread().getId()));
                         String messageAnswer = gptClient.getAnswerGPT(update.getMessage().getText().split(MESSAGE_GPT_SPLIT)[1]);
                         messageAnswer = messageAnswer.replaceAll("<", "&lt;")
                                 .replaceAll(">", "&gt;")
