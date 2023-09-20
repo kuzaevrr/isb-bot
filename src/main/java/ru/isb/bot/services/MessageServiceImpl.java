@@ -75,7 +75,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public String getAnswerMessage(String text) {
+    public String getAnswerGPTMessage(String text) {
         return StringUtils.replaceHTML(gptClient.getAnswerGPT(text.split(MESSAGE_GPT_SPLIT)[1]));
     }
 

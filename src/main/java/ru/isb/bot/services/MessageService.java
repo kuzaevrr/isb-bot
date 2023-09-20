@@ -7,7 +7,7 @@ public interface MessageService {
 
     String getSchedulesWeek() throws IOException, InterruptedException, ClassNotFoundException;
     String getListGroup();
-    String getAnswerMessage(String text);
+    String getAnswerGPTMessage(String text);
     void sendFileToNextcloud(File file, String fileName);
 
 }

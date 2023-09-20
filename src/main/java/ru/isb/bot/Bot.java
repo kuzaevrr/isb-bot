@@ -76,12 +76,22 @@ public class Bot extends TelegramLongPollingBot {
         }
         if (update.getMessage().getText().contains(MESSAGE_GPT_SPLIT)) {
             executeMessages(
-                    messageService.getAnswerMessage(update.getMessage().getText()),
+                    getAnswerGPTMessageAndTyping(update),
                     update.getMessage().getChatId()
             );
         }
     }
 
+    private String getAnswerGPTMessageAndTyping(Update update) {
+        Thread typingThread = getTypingThread(update.getMessage().getChatId());
+        typingThread.start();
+
+        String answer = messageService.getAnswerGPTMessage(update.getMessage().getText());
+
+        typingThread.stop();
+
+        return answer;
+    }
     @SneakyThrows
     private void handlerMessageDocument(Update update) {
         Document document = update.getMessage().getDocument();
@@ -107,9 +117,6 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     private void executeMessages(String message, Long chatId) {
-        Thread typingThread = getTypingThread(chatId);
-        typingThread.start();
-
         MessageUtils.textSplitter(message).forEach(message4096 -> {
             try {
                 execute(
@@ -123,8 +130,6 @@ public class Bot extends TelegramLongPollingBot {
                 sendMessageException(e, chatId);
             }
         });
-
-        typingThread.stop();
     }
 
     private SendMessage sendMessage(String text, Long chatId) {
