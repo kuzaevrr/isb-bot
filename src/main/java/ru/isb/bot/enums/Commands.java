@@ -26,7 +26,7 @@ public enum Commands {
     public static Commands fromString(String value) {
         if (value != null) {
             for (Commands pt : Commands.values()) {
-                if (value.equalsIgnoreCase(pt.command)) {
+                if (value.equalsIgnoreCase(pt.command) || pt.command.contains(value)) {
                     return pt;
                 }
             }
