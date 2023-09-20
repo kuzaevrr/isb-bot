@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -63,16 +64,7 @@ public class Bot extends TelegramLongPollingBot {
                     }
                     if (update.getMessage().getText().contains(MESSAGE_GPT_SPLIT)) {
 
-                        Thread thread = new Thread(() -> {
-                            try {
-                                while (true) {
-                                    execute(new SendChatAction(String.valueOf(update.getMessage().getChatId()), "TYPING", (int) Thread.currentThread().getId()));
-                                    Thread.sleep(2800);
-                                }
-                            } catch (TelegramApiException e) {
-                            }
-                        });
-                        thread.start();
+                        Thread thread = getThread(update);
                         String messageAnswer = gptClient.getAnswerGPT(update.getMessage().getText().split(MESSAGE_GPT_SPLIT)[1]);
                         thread.stop();
                         messageAnswer = messageAnswer.replaceAll("<", "&lt;")
@@ -101,6 +93,21 @@ public class Bot extends TelegramLongPollingBot {
             log.error(e.getMessage(), e);
             sendMessageException(e, update.getMessage().getChatId());
         }
+    }
+
+    @NotNull
+    private Thread getThread(Update update) {
+        Thread thread = new Thread(() -> {
+            try {
+                while (true) {
+                    execute(new SendChatAction(String.valueOf(update.getMessage().getChatId()), "TYPING", (int) Thread.currentThread().getId()));
+                    Thread.sleep(2800);
+                }
+            } catch (Exception e) {
+            }
+        });
+        thread.start();
+        return thread;
     }
 
     private void executeMessages(String message, Long chatId) {
