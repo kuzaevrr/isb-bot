@@ -63,8 +63,10 @@ public class Bot extends TelegramLongPollingBot {
                     }
                     if (update.getMessage().getText().contains(MESSAGE_GPT_SPLIT)) {
 
-                        startTypingMessage(update.getMessage().getChatId());
+                        Thread typingThread = getTypingMessage(update.getMessage().getChatId());
+                        typingThread.start();
                         String messageAnswer = gptClient.getAnswerGPT(update.getMessage().getText().split(MESSAGE_GPT_SPLIT)[1]);
+                        typingThread.stop();
                         messageAnswer = messageAnswer.replaceAll("<", "&lt;")
                                 .replaceAll(">", "&gt;")
                                 .replaceAll("!", "&#33;")
@@ -93,8 +95,8 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
-    private void startTypingMessage(Long chatId) {
-        new Thread(() -> {
+    private Thread getTypingMessage(Long chatId) {
+        return new Thread(() -> {
             try {
                 while (true) {
                     execute(new SendChatAction(String.valueOf(chatId), "TYPING", (int) Thread.currentThread().getId()));
@@ -103,7 +105,7 @@ public class Bot extends TelegramLongPollingBot {
             } catch (Exception e) {
                 log.error("Typing message error: {}", e.getMessage(), e);
             }
-        }).start();
+        });
     }
 
     private void executeMessages(String message, Long chatId) {
