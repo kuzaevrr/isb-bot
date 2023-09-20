@@ -14,7 +14,6 @@ import org.telegram.telegrambots.meta.api.methods.send.SendChatAction;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.isb.bot.clients.ChatGPTClient;
 import ru.isb.bot.clients.NextcloudClient;
 import ru.isb.bot.enums.Commands;
@@ -64,9 +63,8 @@ public class Bot extends TelegramLongPollingBot {
                     }
                     if (update.getMessage().getText().contains(MESSAGE_GPT_SPLIT)) {
 
-                        Thread thread = getThread(update);
+                        startTypingMessage(update.getMessage().getChatId());
                         String messageAnswer = gptClient.getAnswerGPT(update.getMessage().getText().split(MESSAGE_GPT_SPLIT)[1]);
-                        thread.stop();
                         messageAnswer = messageAnswer.replaceAll("<", "&lt;")
                                 .replaceAll(">", "&gt;")
                                 .replaceAll("!", "&#33;")
@@ -95,19 +93,17 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
-    @NotNull
-    private Thread getThread(Update update) {
-        Thread thread = new Thread(() -> {
+    private void startTypingMessage(Long chatId) {
+        new Thread(() -> {
             try {
                 while (true) {
-                    execute(new SendChatAction(String.valueOf(update.getMessage().getChatId()), "TYPING", (int) Thread.currentThread().getId()));
+                    execute(new SendChatAction(String.valueOf(chatId), "TYPING", (int) Thread.currentThread().getId()));
                     Thread.sleep(2800);
                 }
             } catch (Exception e) {
+                log.error("Typing message error: {}", e.getMessage(), e);
             }
-        });
-        thread.start();
-        return thread;
+        }).start();
     }
 
     private void executeMessages(String message, Long chatId) {
