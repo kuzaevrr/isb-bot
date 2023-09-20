@@ -13,13 +13,12 @@ import org.telegram.telegrambots.meta.api.methods.send.SendChatAction;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import ru.isb.bot.clients.ChatGPTClient;
 import ru.isb.bot.clients.NextcloudClient;
 import ru.isb.bot.enums.Commands;
 import ru.isb.bot.services.MessageServiceImpl;
 import ru.isb.bot.utils.MessageUtils;
 
-import java.io.File;
+import static ru.isb.bot.services.MessageServiceImpl.MESSAGE_GPT_SPLIT;
 
 @Log4j2
 @Component
@@ -36,62 +35,62 @@ public class Bot extends TelegramLongPollingBot {
 
     private final MessageServiceImpl messageService;
     private final NextcloudClient nextcloudClient;
-    private final ChatGPTClient gptClient;
-
-    private static final String MESSAGE_GPT_SPLIT = "GPT -> ";
 
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
         try {
             if (update.hasMessage()) {
-                if (update.getMessage().hasText()) {
-                    switch (Commands.fromString(update.getMessage().getText())) {
-                        case SCHEDULE_GROUP, SCHEDULE -> executeMessages(
-                                messageService.getSchedulesWeek(),
-                                update.getMessage().getChatId()
-                        );
-                        case LIST_GROUP, LIST -> executeMessages(
-                                messageService.getListGroup(),
-                                update.getMessage().getChatId()
-                        );
-                        case ALL, ALL_GROUP, ALL_LINK -> executeMessages(
-                                "@elektrik_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @Va1er1ev1ch @vladka_teb @polibuu @Desert567",
-                                update.getMessage().getChatId()
-                        );
-                    }
-                    if (update.getMessage().getText().contains(MESSAGE_GPT_SPLIT)) {
-
-                        Thread typingThread = getTypingThread(update.getMessage().getChatId());
-                        typingThread.start();
-                        String messageAnswer = gptClient.getAnswerGPT(update.getMessage().getText().split(MESSAGE_GPT_SPLIT)[1]);
-                        typingThread.stop();
-                        messageAnswer = messageAnswer.replaceAll("<", "&lt;")
-                                .replaceAll(">", "&gt;")
-                                .replaceAll("!", "&#33;")
-                                .replaceFirst("```", "<pre>")
-                                .replaceFirst("```", "</pre>");
-
-                        executeMessages(
-                                messageAnswer,
-                                update.getMessage().getChatId()
-                        );
-                    }
-                } else if (update.getMessage().hasDocument()) {
-                    Document document = update.getMessage().getDocument();
-                    try {
-                        File file = downloadFile(execute(new GetFile(document.getFileId())).getFilePath());
-                        nextcloudClient.uploadFile(file, document.getFileName());
-                    } catch (Exception e) {
-                        log.error(e.getMessage(), e);
-                        sendMessageException(e, update.getMessage().getChatId());
-                    }
-                }
+                switchMessage(update);
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             sendMessageException(e, update.getMessage().getChatId());
         }
+    }
+
+    @SneakyThrows
+    private void switchMessage(Update update) {
+        if (update.getMessage().hasText()) {
+            handlerMessageText(update);
+        } else if (update.getMessage().hasDocument()) {
+            handlerMessageDocument(update);
+        }
+    }
+
+    @SneakyThrows
+    private void handlerMessageText(Update update) {
+        switch (Commands.fromString(update.getMessage().getText())) {
+            case SCHEDULE_GROUP, SCHEDULE -> executeMessages(
+                    messageService.getSchedulesWeek(),
+                    update.getMessage().getChatId()
+            );
+            case LIST_GROUP, LIST -> executeMessages(
+                    messageService.getListGroup(),
+                    update.getMessage().getChatId()
+            );
+            case ALL, ALL_GROUP, ALL_LINK -> executeMessages(
+                    "@elektrik_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @Va1er1ev1ch @vladka_teb @polibuu @Desert567",
+                    update.getMessage().getChatId()
+            );
+        }
+        if (update.getMessage().getText().contains(MESSAGE_GPT_SPLIT)) {
+            executeMessages(
+                    messageService.getAnswerMessage(update.getMessage().getText()),
+                    update.getMessage().getChatId()
+            );
+        }
+    }
+
+    @SneakyThrows
+    private void handlerMessageDocument(Update update) {
+        Document document = update.getMessage().getDocument();
+        messageService.sendFileToNextcloud(
+                downloadFile(
+                        execute(new GetFile(document.getFileId())).getFilePath()
+                ),
+                document.getFileName()
+        );
     }
 
     private Thread getTypingThread(Long chatId) {
@@ -108,6 +107,9 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     private void executeMessages(String message, Long chatId) {
+        Thread typingThread = getTypingThread(chatId);
+        typingThread.start();
+
         MessageUtils.textSplitter(message).forEach(message4096 -> {
             try {
                 execute(
@@ -121,6 +123,8 @@ public class Bot extends TelegramLongPollingBot {
                 sendMessageException(e, chatId);
             }
         });
+
+        typingThread.stop();
     }
 
     private SendMessage sendMessage(String text, Long chatId) {

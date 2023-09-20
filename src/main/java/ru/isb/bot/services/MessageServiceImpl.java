@@ -6,9 +6,12 @@ import com.google.gson.reflect.TypeToken;
 import lombok.RequiredArgsConstructor;
 import okhttp3.Response;
 import org.springframework.stereotype.Service;
+import ru.isb.bot.clients.ChatGPTClient;
+import ru.isb.bot.clients.NextcloudClient;
 import ru.isb.bot.clients.StudyScheduleClient;
 import ru.isb.bot.dto.ScheduleDTO;
 import ru.isb.bot.utils.MessageUtils;
+import ru.isb.bot.utils.StringUtils;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -22,9 +25,13 @@ import static ru.isb.bot.clients.StudyScheduleClientImpl.URL;
 
 @Service
 @RequiredArgsConstructor
-public class MessageServiceImpl implements MessageService{
+public class MessageServiceImpl implements MessageService {
 
     private final StudyScheduleClient client;
+    private final ChatGPTClient gptClient;
+    private final NextcloudClient nextcloudClient;
+
+    public static final String MESSAGE_GPT_SPLIT = "GPT -> ";
 
     private final List<String> list = Arrays.asList("Андреев Р.Н.",
             "Буркова П.В.",
@@ -65,5 +72,15 @@ public class MessageServiceImpl implements MessageService{
         list.sort(String::compareTo);
         return "<b>Список группы: </b>\n" + IntStream.range(0, list.size())
                 .mapToObj(i -> i + 1 + ") " + list.get(i) + "\n").collect(Collectors.joining());
+    }
+
+    @Override
+    public String getAnswerMessage(String text) {
+        return StringUtils.replaceHTML(gptClient.getAnswerGPT(text.split(MESSAGE_GPT_SPLIT)[1]));
+    }
+
+    @Override
+    public void sendFileToNextcloud(File file, String fileName) {
+        nextcloudClient.uploadFile(file, fileName);
     }
 }

@@ -38,11 +38,6 @@ public class StudyScheduleClientImpl implements StudyScheduleClient {
                 .url(URL)
                 .post(requestBody)
                 .build();
-
-        log.info(String.format("stream_id=%s&term=2&date_start=%s&date_end=%s",
-                STREAM_ID,
-                startDate,
-                endDate));
         try {
             return client.newCall(request).execute();
         } catch (IOException e) {

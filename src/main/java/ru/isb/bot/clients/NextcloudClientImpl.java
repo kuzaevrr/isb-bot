@@ -11,6 +11,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import ru.isb.bot.utils.PathFileUtils;
 import ru.isb.bot.utils.StringUtils;
 
 import java.io.File;
@@ -36,7 +37,7 @@ public class NextcloudClientImpl implements NextcloudClient {
 
     @SneakyThrows
     public void uploadFile(File file, String fileName) {
-        fileName = StringUtils.replaceSpace(fileName);
+        fileName = PathFileUtils.replaceSpace(fileName);
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             HttpPut request = new HttpPut(NEXTCLOUD_HOST + NEXTCLOUD_URL_PATH + NEXTCLOUD_PATH_TO_FILE + "/" + fileName);
@@ -49,7 +50,7 @@ public class NextcloudClientImpl implements NextcloudClient {
                 log.info("File upload status code: " + statusCode);
 
                 if (statusCode == 204) {
-                    uploadFile(file, StringUtils.copyFileName(fileName));
+                    uploadFile(file, PathFileUtils.copyFileName(fileName));
                 } else if (statusCode == 302) {
                     redirect(response, fileEntity, encodedCredentials, httpClient);
                 }
