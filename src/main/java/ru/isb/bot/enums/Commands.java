@@ -14,7 +14,7 @@ public enum Commands {
     ALL_LINK("@all"),
     ALL("/all"),
     ALL_GROUP("/all@ISBNotPiBot"),
-    NO_COMMAND(null);
+    NO_COMMAND("");
 
     private final String command;
 
