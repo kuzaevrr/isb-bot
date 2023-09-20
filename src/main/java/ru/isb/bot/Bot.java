@@ -13,6 +13,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendChatAction;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.isb.bot.clients.ChatGPTClient;
 import ru.isb.bot.clients.NextcloudClient;
 import ru.isb.bot.enums.Commands;
@@ -61,8 +62,19 @@ public class Bot extends TelegramLongPollingBot {
                         );
                     }
                     if (update.getMessage().getText().contains(MESSAGE_GPT_SPLIT)) {
-                        execute(new SendChatAction(String.valueOf(update.getMessage().getChatId()), "TYPING", (int) Thread.currentThread().getId()));
+
+                        Thread thread = new Thread(() -> {
+                            try {
+                                while (true) {
+                                    execute(new SendChatAction(String.valueOf(update.getMessage().getChatId()), "TYPING", (int) Thread.currentThread().getId()));
+                                    Thread.sleep(2800);
+                                }
+                            } catch (TelegramApiException e) {
+                            }
+                        });
+                        thread.start();
                         String messageAnswer = gptClient.getAnswerGPT(update.getMessage().getText().split(MESSAGE_GPT_SPLIT)[1]);
+                        thread.stop();
                         messageAnswer = messageAnswer.replaceAll("<", "&lt;")
                                 .replaceAll(">", "&gt;")
                                 .replaceAll("!", "&#33;")
