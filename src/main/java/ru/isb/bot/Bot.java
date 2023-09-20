@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -63,7 +62,7 @@ public class Bot extends TelegramLongPollingBot {
                     }
                     if (update.getMessage().getText().contains(MESSAGE_GPT_SPLIT)) {
 
-                        Thread typingThread = getTypingMessage(update.getMessage().getChatId());
+                        Thread typingThread = getTypingThread(update.getMessage().getChatId());
                         typingThread.start();
                         String messageAnswer = gptClient.getAnswerGPT(update.getMessage().getText().split(MESSAGE_GPT_SPLIT)[1]);
                         typingThread.stop();
@@ -95,7 +94,7 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
-    private Thread getTypingMessage(Long chatId) {
+    private Thread getTypingThread(Long chatId) {
         return new Thread(() -> {
             try {
                 while (true) {
