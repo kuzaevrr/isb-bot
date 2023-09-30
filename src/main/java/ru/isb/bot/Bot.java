@@ -39,10 +39,11 @@ public class Bot extends TelegramLongPollingBot {
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
-        Thread typingThread = getTypingThread(update.getMessage().getChatId());
+        Thread typingThread = null;
 
         try {
             if (update.hasMessage()) {
+                typingThread = getTypingThread(update.getMessage().getChatId());
                 typingThread.start();
                 switchMessage(update);
             }
@@ -50,7 +51,9 @@ public class Bot extends TelegramLongPollingBot {
             log.error(e.getMessage(), e);
             sendMessageException(e, update.getMessage().getChatId());
         } finally {
-            typingThread.stop();
+            if (typingThread != null) {
+                typingThread.stop();
+            }
         }
     }
 
