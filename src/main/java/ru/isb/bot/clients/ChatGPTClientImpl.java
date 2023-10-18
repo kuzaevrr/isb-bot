@@ -12,6 +12,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.Duration;
 
 @Log4j2
 @Component
@@ -35,6 +36,7 @@ public class ChatGPTClientImpl implements ChatGPTClient {
                 .POST(HttpRequest.BodyPublishers.ofString(JsonUtils.parseObjectToString(chatGPTSenderDTO)))
                 .header("Authorization", "Bearer " + apiKey)
                 .header("Content-Type", "application/json")
+                .timeout(Duration.ofMillis(2))
                 .build();
 
         // Отправить запрос и получить ответ
