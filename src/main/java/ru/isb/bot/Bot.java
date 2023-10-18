@@ -39,25 +39,22 @@ public class Bot extends TelegramLongPollingBot {
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
-        new Thread(() -> {
+        Thread typingThread = null;
 
-            Thread typingThread = null;
-            try {
-                if (update.hasMessage()) {
-                    typingThread = getTypingThread(update.getMessage().getChatId());
-                    typingThread.start();
-                    switchMessage(update);
-                }
-            } catch (Exception e) {
-                log.error(e.getMessage(), e);
-                sendMessageException(e, update.getMessage().getChatId());
-            } finally {
-                if (typingThread != null) {
-                    typingThread.stop();
-                }
+        try {
+            if (update.hasMessage()) {
+                typingThread = getTypingThread(update.getMessage().getChatId());
+                typingThread.start();
+                switchMessage(update);
             }
-
-        });
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            sendMessageException(e, update.getMessage().getChatId());
+        } finally {
+            if (typingThread != null) {
+                typingThread.stop();
+            }
+        }
     }
 
     @SneakyThrows
