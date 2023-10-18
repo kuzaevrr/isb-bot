@@ -57,7 +57,7 @@ public class Bot extends TelegramLongPollingBot {
                 }
             }
 
-        });
+        }).start();
     }
 
     @SneakyThrows
