@@ -36,7 +36,7 @@ public class ChatGPTClientImpl implements ChatGPTClient {
                 .POST(HttpRequest.BodyPublishers.ofString(JsonUtils.parseObjectToString(chatGPTSenderDTO)))
                 .header("Authorization", "Bearer " + apiKey)
                 .header("Content-Type", "application/json")
-                .timeout(Duration.ofMillis(4))
+                .timeout(Duration.ofMinutes(3))
                 .build();
 
         // Отправить запрос и получить ответ
