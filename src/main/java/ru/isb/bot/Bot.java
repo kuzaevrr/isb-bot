@@ -19,8 +19,6 @@ import ru.isb.bot.services.MessageServiceImpl;
 import ru.isb.bot.utils.MessageUtils;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import static ru.isb.bot.services.MessageServiceImpl.MESSAGE_GPT_SPLIT;
 
