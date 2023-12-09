@@ -46,9 +46,8 @@ public class Bot extends TelegramLongPollingBot {
         CompletableFuture.runAsync(() -> {
             try {
                 if (update.hasMessage()) {
-                    CompletableFuture<Void> typingThread = getTypingThread(update.getMessage().getChatId());
+                    typing(update.getMessage().getChatId());
                     switchMessage(update);
-                    typingThread.join();
                 }
             } catch (Exception e) {
                 log.error(e.getMessage(), e);
@@ -102,8 +101,8 @@ public class Bot extends TelegramLongPollingBot {
         );
     }
 
-    private CompletableFuture<Void> getTypingThread(Long chatId) {
-        return CompletableFuture.runAsync(() -> {
+    private void typing(Long chatId) {
+        CompletableFuture.runAsync(() -> {
             try {
                 execute(new SendChatAction(String.valueOf(chatId), "TYPING", (int) Thread.currentThread().getId()));
             } catch (Exception e) {
