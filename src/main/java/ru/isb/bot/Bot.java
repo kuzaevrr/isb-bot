@@ -18,6 +18,10 @@ import ru.isb.bot.enums.Commands;
 import ru.isb.bot.services.MessageServiceImpl;
 import ru.isb.bot.utils.MessageUtils;
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import static ru.isb.bot.services.MessageServiceImpl.MESSAGE_GPT_SPLIT;
 
 @Log4j2
@@ -39,24 +43,19 @@ public class Bot extends TelegramLongPollingBot {
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
-        Thread typingThread = null;
-        try {
-            if (update.hasMessage()) {
-                typingThread = getTypingThread(update.getMessage().getChatId());
-                typingThread.start();
-                switchMessage(update);
+        CompletableFuture.runAsync(() -> {
+            try {
+                if (update.hasMessage()) {
+                    CompletableFuture<Void> typingThread = getTypingThread(update.getMessage().getChatId());
+                    switchMessage(update);
+                    typingThread.join();
+                }
+            } catch (Exception e) {
+                log.error(e.getMessage(), e);
+                sendMessageException(e, update.getMessage().getChatId());
             }
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            sendMessageException(e, update.getMessage().getChatId());
-        } finally {
-            if (typingThread != null) {
-                typingThread.stop();
-            }
-        }
-
-    };
-
+        });
+    }
 
 
     @SneakyThrows
@@ -103,13 +102,10 @@ public class Bot extends TelegramLongPollingBot {
         );
     }
 
-    private Thread getTypingThread(Long chatId) {
-        return new Thread(() -> {
+    private CompletableFuture<Void> getTypingThread(Long chatId) {
+        return CompletableFuture.runAsync(() -> {
             try {
-                while (true) {
-                    execute(new SendChatAction(String.valueOf(chatId), "TYPING", (int) Thread.currentThread().getId()));
-                    Thread.sleep(2800);
-                }
+                execute(new SendChatAction(String.valueOf(chatId), "TYPING", (int) Thread.currentThread().getId()));
             } catch (Exception e) {
                 log.error("Typing message error: {}", e.getMessage(), e);
             }
