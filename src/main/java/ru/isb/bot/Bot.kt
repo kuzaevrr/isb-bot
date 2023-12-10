@@ -64,9 +64,6 @@ class Bot(
 
     @SneakyThrows
     private fun switchMessage(update: Update) {
-        for (i in 1..1000000) {
-            println(i*i)
-        }
         if (update.message.hasText()) {
             handlerMessageText(update)
         } else if (update.message.hasDocument()) {
