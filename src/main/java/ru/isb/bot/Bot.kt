@@ -17,7 +17,6 @@ import ru.isb.bot.enums.Commands.Companion.fromString
 import ru.isb.bot.services.MessageService
 import ru.isb.bot.services.MessageServiceImpl
 import ru.isb.bot.utils.MessageUtils.Companion.textSplitter
-import java.util.concurrent.CompletableFuture
 import java.util.function.Consumer
 
 @OptIn(DelicateCoroutinesApi::class)
