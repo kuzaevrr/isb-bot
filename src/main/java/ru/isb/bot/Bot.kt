@@ -1,9 +1,7 @@
 package ru.isb.bot
 
-import lombok.Getter
-import lombok.RequiredArgsConstructor
+import kotlinx.coroutines.*
 import lombok.SneakyThrows
-import lombok.extern.log4j.Log4j2
 import org.apache.logging.log4j.kotlin.Logging
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
@@ -22,38 +20,53 @@ import ru.isb.bot.utils.MessageUtils.Companion.textSplitter
 import java.util.concurrent.CompletableFuture
 import java.util.function.Consumer
 
+@OptIn(DelicateCoroutinesApi::class)
 @Component
 class Bot(
     private val messageService: MessageService,
     private val nextcloudClient: NextcloudClient
 ) : TelegramLongPollingBot(), Logging {
 
-    @Value("\${bot.token}") private val botToken: String = ""
+    @Value("\${bot.token}")
+    private val botToken: String = ""
 
     @Value("\${bot.name}")
     private val botUsername: String = ""
-    override fun getBotUsername(): String = botUsername
-    override fun getBotToken(): String = botToken
 
     @Value("\${bot.isb.chat.id}")
     private val ISB_CHAT_ID: String = ""
+
+    private var typingJob: Job? = null
+
+
+    override fun getBotUsername(): String = botUsername
+    override fun getBotToken(): String = botToken
+
     @SneakyThrows
-    override fun onUpdateReceived(update: Update) {
-        CompletableFuture.runAsync {
-            try {
-                if (update.hasMessage()) {
-                    typing(update.message.chatId)
-                    switchMessage(update)
-                }
-            } catch (e: Exception) {
-                logger.error(e.message ?: "Error onUpdateReceived", e)
-                sendMessageException(e, update.message.chatId)
+    override fun onUpdateReceived(update: Update): Unit = runBlocking {
+        GlobalScope.launch { asyncOnUpdateReceived(update) }
+    }
+
+    private fun asyncOnUpdateReceived(update: Update) {
+        try {
+
+            if (update.hasMessage()) {
+                typingJob = GlobalScope.launch { typing(update.message.chatId) }
+                switchMessage(update)
             }
+        } catch (e: Exception) {
+            logger.error(e.message ?: "Error onUpdateReceived", e)
+            sendMessageException(e, update.message.chatId)
+        } finally {
+            typingJob?.cancel(null)
         }
     }
 
     @SneakyThrows
     private fun switchMessage(update: Update) {
+        for (i in 1..1000000) {
+            println(i*i)
+        }
         if (update.message.hasText()) {
             handlerMessageText(update)
         } else if (update.message.hasDocument()) {
@@ -68,14 +81,17 @@ class Bot(
                 messageService.getSchedulesWeek(),
                 update.message.chatId
             )
+
             Commands.LIST_GROUP, Commands.LIST -> executeMessages(
                 messageService.getListGroup(),
                 update.message.chatId
             )
+
             Commands.ALL, Commands.ALL_GROUP, Commands.ALL_LINK -> executeMessages(
                 "@elektrik_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @V0xP0puli @vladka_teb @polibuu @Desert567",
                 update.message.chatId
             )
+
             else -> {}
         }
         if (update.message.text.contains(MessageServiceImpl.MESSAGE_GPT_SPLIT)) {
@@ -98,8 +114,8 @@ class Bot(
     }
 
     private fun typing(chatId: Long) {
-        CompletableFuture.runAsync {
-            try {
+        try {
+            while (false == typingJob?.isCancelled) {
                 execute(
                     SendChatAction(
                         chatId.toString(),
@@ -107,9 +123,10 @@ class Bot(
                         Thread.currentThread().id.toInt()
                     )
                 )
-            } catch (e: Exception) {
-                logger.error("Typing message error: ${e.message}", e)
+                Thread.sleep(3000)
             }
+        } catch (e: Exception) {
+            logger.error("Typing message error: ${e.message}", e)
         }
     }
 
@@ -143,5 +160,5 @@ class Bot(
             sendMessage(e.toString(), chatId)
         )
     }
-    
+
 }
