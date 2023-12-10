@@ -94,6 +94,11 @@
             <artifactId>kotlin-maven-lombok</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api-kotlin</artifactId>
+            <version>1.3.0</version>
+        </dependency>
     </dependencies>
 
     <build>

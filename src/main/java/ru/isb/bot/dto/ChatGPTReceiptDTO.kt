@@ -14,7 +14,7 @@ import lombok.Setter
 @JsonIgnoreProperties
 class ChatGPTReceiptDTO(
     @JsonIgnore
-    var choices: List<Choice>
+    var choices: List<Choice>? = null
 ) {
 
 }
