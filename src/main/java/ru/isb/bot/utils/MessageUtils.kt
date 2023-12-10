@@ -29,7 +29,6 @@ class MessageUtils : Logging {
             } else {
                 message += "Расписание нет! Разработчик не виновен, бейте палкой того кто составляет расписание :D"
             }
-            println(message)
             return message
         }
 
