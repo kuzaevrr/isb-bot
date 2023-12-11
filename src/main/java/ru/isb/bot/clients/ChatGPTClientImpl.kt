@@ -48,6 +48,7 @@ class ChatGPTClientImpl : ChatGPTClient, Logging {
             .post(json.toRequestBody(JSON))
             .header("Authorization", "Bearer $apiKey")
             .header("Content-Type", "application/json")
+            .header("Accept-Encoding", "identity")
             .build()
 
         // Отправить запрос и получить ответ
