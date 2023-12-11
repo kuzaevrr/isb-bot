@@ -48,7 +48,6 @@ class Bot(
 
     private fun asyncOnUpdateReceived(update: Update) {
         try {
-
             if (update.hasMessage()) {
                 typingJob = GlobalScope.launch { typing(update.message.chatId) }
                 switchMessage(update)

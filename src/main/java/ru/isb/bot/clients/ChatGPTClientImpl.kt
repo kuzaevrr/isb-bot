@@ -12,11 +12,6 @@ import org.springframework.stereotype.Component
 import ru.isb.bot.dto.ChatGPTReceiptDTO
 import ru.isb.bot.dto.ChatGPTSenderDTO
 import ru.isb.bot.utils.JsonUtils
-import java.net.URI
-import java.net.http.HttpClient
-import java.net.http.HttpRequest
-import java.net.http.HttpResponse
-import java.time.Duration
 import java.util.concurrent.TimeUnit
 
 @Component
