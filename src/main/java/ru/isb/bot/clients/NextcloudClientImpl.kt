@@ -54,7 +54,7 @@ class NextcloudClientImpl : NextcloudClient, Logging {
                 }
             }
         } catch (ex: IOException) {
-            logger.error(ex.message ?: "Ошибка запроса к облаку", ex)
+            logger.error("Ошибка запроса к облаку: ${ex.message}", ex)
         }
     }
 

@@ -1,6 +1,11 @@
 package ru.isb.bot.clients
 
 import lombok.SneakyThrows
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.apache.logging.log4j.kotlin.Logging
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
@@ -12,7 +17,7 @@ import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 import java.time.Duration
-import kotlin.math.log
+import java.util.concurrent.TimeUnit
 
 @Component
 class ChatGPTClientImpl : ChatGPTClient, Logging {
@@ -20,39 +25,47 @@ class ChatGPTClientImpl : ChatGPTClient, Logging {
     @Value("\${gpt.key}")
     private val apiKey: String = ""
 
+    val JSON = "application/json; charset=utf-8".toMediaType()
+
+
     @SneakyThrows
     override fun getAnswerGPT(message: String): String {
-        val httpClient = HttpClient.newHttpClient()
+        val client: OkHttpClient = OkHttpClient.Builder()
+            .connectTimeout(3, TimeUnit.MINUTES)
+            .writeTimeout(3, TimeUnit.MINUTES)
+            .readTimeout(3, TimeUnit.MINUTES)
+            .build()
+
         val chatGPTSenderDTO = ChatGPTSenderDTO()
         chatGPTSenderDTO.setContent(message)
         logger.info(message)
 
         val json = JsonUtils.parseObjectToString(chatGPTSenderDTO)
         logger.info(json)
-        // Создать HttpRequest с методом POST и установить заголовки
-        val request = HttpRequest.newBuilder()
-            .uri(URI("http://127.0.0.1:1337/v1/chat/completions"))
-            .POST(HttpRequest.BodyPublishers.ofString(json))
-            .header("Authorization", "Bearer $apiKey").header("Content-Type", "application/json")
-            .timeout(Duration.ofMinutes(3))
+
+        val request = Request.Builder()
+            .url("http://127.0.0.1:1337/v1/chat/completions")
+            .post(json.toRequestBody(JSON))
+            .header("Authorization", "Bearer $apiKey")
+            .header("Content-Type", "application/json")
             .build()
 
         // Отправить запрос и получить ответ
-        val response = httpClient.send(request, HttpResponse.BodyHandlers.ofString())
-        return if (response.statusCode() in 200..299) {
+        val response = client.newCall(request).execute()
+        return if (response.isSuccessful){
             try {
                 val dto = JsonUtils.parseStringJsonToObject(
-                    response.body(), ChatGPTReceiptDTO::class.java
+                    response.body?.string(), ChatGPTReceiptDTO::class.java
                 )
 
                 dto?.choices?.let { it[0].message?.content }
-                        ?: "ChatGPT отправил не известный объект. ${response.body()}"
+                        ?: "ChatGPT отправил не известный объект. ${response.body?.string()}"
             } catch (e: Exception) {
                 throw RuntimeException("Ошибка парсинга body от ChatGPT: " + e.message)
             }
         } else {
-            "Код ошибки: ${response.statusCode()}\n" +
-            "Текст ошибки: ${response.body()}"
+            "Код ошибки: ${response.code}\n" +
+            "Текст ошибки: ${response.body?.string()}"
         }
     }
 
