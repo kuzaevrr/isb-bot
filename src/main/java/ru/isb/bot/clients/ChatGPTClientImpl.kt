@@ -1,6 +1,7 @@
 package ru.isb.bot.clients
 
 import lombok.SneakyThrows
+import org.apache.logging.log4j.kotlin.Logging
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import ru.isb.bot.dto.ChatGPTReceiptDTO
@@ -11,9 +12,10 @@ import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 import java.time.Duration
+import kotlin.math.log
 
 @Component
-class ChatGPTClientImpl : ChatGPTClient {
+class ChatGPTClientImpl : ChatGPTClient, Logging {
 
     @Value("\${gpt.key}")
     private val apiKey: String = ""
@@ -24,9 +26,12 @@ class ChatGPTClientImpl : ChatGPTClient {
         val chatGPTSenderDTO = ChatGPTSenderDTO()
         chatGPTSenderDTO.setContent(message)
 
+        val json = JsonUtils.parseObjectToString(chatGPTSenderDTO)
+        logger.info(json)
         // Создать HttpRequest с методом POST и установить заголовки
-        val request = HttpRequest.newBuilder().uri(URI("http://127.0.0.1:1337/v1/chat/completions"))
-            .POST(HttpRequest.BodyPublishers.ofString(JsonUtils.parseObjectToString(chatGPTSenderDTO)))
+        val request = HttpRequest.newBuilder()
+            .uri(URI("http://127.0.0.1:1337/v1/chat/completions"))
+            .POST(HttpRequest.BodyPublishers.ofString(json))
             .header("Authorization", "Bearer $apiKey").header("Content-Type", "application/json")
             .timeout(Duration.ofMinutes(3)).build()
 

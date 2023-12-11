@@ -54,7 +54,7 @@ class Bot(
                 switchMessage(update)
             }
         } catch (e: Exception) {
-            logger.error(e.message ?: "Error onUpdateReceived", e)
+            logger.error("Error onUpdateReceived ${e.message}", e)
             sendMessageException(e, update.message.chatId)
         } finally {
             typingJob?.cancel(null)
