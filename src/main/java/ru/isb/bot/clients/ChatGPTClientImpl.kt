@@ -34,6 +34,7 @@ class ChatGPTClientImpl : ChatGPTClient, Logging {
             .connectTimeout(3, TimeUnit.MINUTES)
             .writeTimeout(3, TimeUnit.MINUTES)
             .readTimeout(3, TimeUnit.MINUTES)
+            .retryOnConnectionFailure(false)
             .build()
 
         val chatGPTSenderDTO = ChatGPTSenderDTO()
