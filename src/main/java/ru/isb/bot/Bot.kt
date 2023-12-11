@@ -42,9 +42,10 @@ class Bot(
     override fun getBotToken(): String = botToken
 
     @SneakyThrows
-    override fun onUpdateReceived(update: Update): Unit = runBlocking {
-        GlobalScope.launch { asyncOnUpdateReceived(update) }
+    override fun onUpdateReceived(update: Update): Unit {
+        asyncOnUpdateReceived(update)
     }
+
 
     private fun asyncOnUpdateReceived(update: Update) {
         try {
