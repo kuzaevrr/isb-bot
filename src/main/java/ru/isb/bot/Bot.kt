@@ -44,11 +44,12 @@ class Bot(
     override fun getBotToken(): String = botToken
 
     @SneakyThrows
-    override fun onUpdateReceived(update: Update): Unit = runBlocking {
+    override fun onUpdateReceived(update: Update) {
         CompletableFuture<Void>().thenRunAsync {
             asyncOnUpdateReceived(update)
         }
     }
+
 
     private fun asyncOnUpdateReceived(update: Update) {
         try {
