@@ -1,6 +1,9 @@
 package ru.isb.bot
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import lombok.SneakyThrows
 import org.apache.logging.log4j.kotlin.Logging
 import org.springframework.beans.factory.annotation.Value
@@ -18,6 +21,8 @@ import ru.isb.bot.services.MessageService
 import ru.isb.bot.services.MessageServiceImpl
 import ru.isb.bot.utils.MessageUtils.Companion.textSplitter
 import java.util.concurrent.CompletableFuture
+import java.util.concurrent.Executor
+import java.util.concurrent.Executors
 import java.util.function.Consumer
 
 
@@ -45,9 +50,16 @@ class Bot(
 
     @SneakyThrows
     override fun onUpdateReceived(update: Update) {
-        CompletableFuture<Void>().thenRunAsync {
-            asyncOnUpdateReceived(update)
+        val executor: Executor = Executors.newSingleThreadExecutor()
+        val future = CompletableFuture<Void>()
+
+        executor.execute {
+            future.thenRunAsync {
+                asyncOnUpdateReceived(update)
+            }
         }
+        //завершаем future
+        future.complete(null);
     }
 
 
