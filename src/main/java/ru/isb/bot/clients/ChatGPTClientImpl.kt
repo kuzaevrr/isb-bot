@@ -25,6 +25,7 @@ class ChatGPTClientImpl : ChatGPTClient, Logging {
         val httpClient = HttpClient.newHttpClient()
         val chatGPTSenderDTO = ChatGPTSenderDTO()
         chatGPTSenderDTO.setContent(message)
+        logger.info(message)
 
         val json = JsonUtils.parseObjectToString(chatGPTSenderDTO)
         logger.info(json)
@@ -33,7 +34,8 @@ class ChatGPTClientImpl : ChatGPTClient, Logging {
             .uri(URI("http://127.0.0.1:1337/v1/chat/completions"))
             .POST(HttpRequest.BodyPublishers.ofString(json))
             .header("Authorization", "Bearer $apiKey").header("Content-Type", "application/json")
-            .timeout(Duration.ofMinutes(3)).build()
+            .timeout(Duration.ofMinutes(3))
+            .build()
 
         // Отправить запрос и получить ответ
         val response = httpClient.send(request, HttpResponse.BodyHandlers.ofString())
