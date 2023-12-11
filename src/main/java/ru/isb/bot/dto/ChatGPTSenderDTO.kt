@@ -11,9 +11,9 @@ import lombok.Setter
 @JsonSerialize
 @JsonDeserialize
 @JsonIgnoreProperties
-class ChatGPTSenderDTO (
+class ChatGPTSenderDTO {
+
     private var messages: MutableList<Message> = ArrayList()
-) {
 
     val model = "gpt-3.5-turbo"
 
