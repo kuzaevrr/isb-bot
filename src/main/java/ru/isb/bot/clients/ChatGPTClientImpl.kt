@@ -53,7 +53,7 @@ class ChatGPTClientImpl : ChatGPTClient, Logging {
 
         // Отправить запрос и получить ответ
         val response = client.newCall(request).execute()
-        return if (response.isSuccessful){
+        return if (response.isSuccessful) {
             try {
                 val dto = JsonUtils.parseStringJsonToObject(
                     response.body?.string(), ChatGPTReceiptDTO::class.java

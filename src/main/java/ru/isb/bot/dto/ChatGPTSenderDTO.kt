@@ -13,7 +13,7 @@ import lombok.Setter
 @JsonIgnoreProperties
 class ChatGPTSenderDTO {
 
-    private var messages: MutableList<Message> = ArrayList()
+    var messages: MutableList<Message> = mutableListOf()
 
     val model = "gpt-3.5-turbo"
 
