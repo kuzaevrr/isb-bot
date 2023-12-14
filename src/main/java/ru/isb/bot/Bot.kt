@@ -56,6 +56,7 @@ class Bot(
         }
 
         future.complete(null)
+        executor.shutdown()
     }
 
 
