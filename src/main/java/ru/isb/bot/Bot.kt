@@ -47,9 +47,16 @@ class Bot(
 
     @SneakyThrows
     override fun onUpdateReceived(update: Update) {
-        GlobalScope.launch {
-            asyncOnUpdateReceived(update)
+        val executor: Executor = Executors.newSingleThreadExecutor()
+        val future = CompletableFuture<Void>()
+
+        executor.execute {
+            future.thenRunAsync {
+                asyncOnUpdateReceived(update)
+            }
         }
+        //завершаем future
+        future.complete(null);
     }
 
 
