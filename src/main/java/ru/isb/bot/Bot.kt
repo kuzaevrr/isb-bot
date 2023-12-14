@@ -1,9 +1,6 @@
 package ru.isb.bot
 
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import lombok.SneakyThrows
 import org.apache.logging.log4j.kotlin.Logging
 import org.springframework.beans.factory.annotation.Value
@@ -50,16 +47,9 @@ class Bot(
 
     @SneakyThrows
     override fun onUpdateReceived(update: Update) {
-        val executor: Executor = Executors.newSingleThreadExecutor()
-        val future = CompletableFuture<Void>()
-
-        executor.execute {
-            future.thenRunAsync {
-                asyncOnUpdateReceived(update)
-            }
+        GlobalScope.launch {
+            asyncOnUpdateReceived(update)
         }
-        //завершаем future
-        future.complete(null);
     }
 
 
@@ -125,7 +115,7 @@ class Bot(
         )
     }
 
-    private fun typing(chatId: Long) {
+    private suspend fun typing(chatId: Long) {
         try {
             while (false == typingJob?.isCancelled) {
                 execute(
@@ -135,7 +125,7 @@ class Bot(
                         Thread.currentThread().id.toInt()
                     )
                 )
-                Thread.sleep(3000)
+                delay(3000)
             }
         } catch (e: Exception) {
             logger.error("Typing message error: ${e.message}", e)
