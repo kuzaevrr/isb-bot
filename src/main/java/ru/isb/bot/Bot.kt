@@ -11,7 +11,6 @@ import org.telegram.telegrambots.meta.api.methods.ParseMode
 import org.telegram.telegrambots.meta.api.methods.send.SendChatAction
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Update
-import ru.isb.bot.clients.NextcloudClient
 import ru.isb.bot.enums.Commands
 import ru.isb.bot.enums.Commands.Companion.fromString
 import ru.isb.bot.services.MessageService
@@ -26,8 +25,7 @@ import java.util.function.Consumer
 @OptIn(DelicateCoroutinesApi::class)
 @Component
 class Bot(
-    private val messageService: MessageService,
-    private val nextcloudClient: NextcloudClient
+    private val messageService: MessageService
 ) : TelegramLongPollingBot(), Logging {
 
     @Value("\${bot.token}")
@@ -38,9 +36,6 @@ class Bot(
 
     @Value("\${bot.isb.chat.id}")
     private val ISB_CHAT_ID: String = ""
-
-    private var typingJob: Job? = null
-
 
     override fun getBotUsername(): String = botUsername
     override fun getBotToken(): String = botToken
@@ -63,14 +58,12 @@ class Bot(
     private fun asyncOnUpdateReceived(update: Update) {
         try {
             if (update.hasMessage()) {
-                typingJob = GlobalScope.launch { typing(update.message.chatId) }
+                GlobalScope.launch { typing(update.message.chatId) }
                 switchMessage(update)
             }
         } catch (e: Exception) {
             logger.error("Error onUpdateReceived ${e.message}", e)
             sendMessageException(e, update.message.chatId)
-        } finally {
-            typingJob?.cancel(null)
         }
     }
 
@@ -124,16 +117,14 @@ class Bot(
 
     private suspend fun typing(chatId: Long) {
         try {
-            while (false == typingJob?.isCancelled) {
-                execute(
-                    SendChatAction(
-                        chatId.toString(),
-                        "TYPING",
-                        Thread.currentThread().id.toInt()
-                    )
+            execute(
+                SendChatAction(
+                    chatId.toString(),
+                    "TYPING",
+                    Thread.currentThread().id.toInt()
                 )
-                delay(3000)
-            }
+            )
+            delay(3000)
         } catch (e: Exception) {
             logger.error("Typing message error: ${e.message}", e)
         }
@@ -149,6 +140,7 @@ class Bot(
                     )
                 )
             } catch (e: Exception) {
+                logger.info("Info executeMessages: $message4096")
                 logger.error(e.message ?: "Error executeMessages", e)
                 sendMessageException(e, chatId)
             }
@@ -157,7 +149,7 @@ class Bot(
 
     private fun sendMessage(text: String, chatId: Long): SendMessage {
         val sendMessage = SendMessage()
-        sendMessage.parseMode = ParseMode.HTML
+        sendMessage.parseMode = ParseMode.MARKDOWN
         sendMessage.text = text
         sendMessage.chatId = chatId.toString()
         return sendMessage

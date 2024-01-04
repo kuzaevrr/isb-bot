@@ -11,7 +11,6 @@ import ru.isb.bot.clients.StudyScheduleClient
 import ru.isb.bot.clients.StudyScheduleClientImpl
 import ru.isb.bot.dto.ScheduleDTO
 import ru.isb.bot.utils.MessageUtils.Companion.formatMessage
-import ru.isb.bot.utils.StringUtils.Companion.replaceHTML
 import java.io.File
 import java.io.IOException
 import java.time.LocalDate
@@ -85,11 +84,9 @@ class MessageServiceImpl(
     }
 
     override fun getAnswerGPTMessage(text: String): String {
-        return replaceHTML(
-            gptClient.getAnswerGPT(
+        return gptClient.getAnswerGPT(
                 text.split(MESSAGE_GPT_SPLIT)[1]
             )
-        )
     }
 
     override fun sendFileToNextcloud(file: File, fileName: String) {

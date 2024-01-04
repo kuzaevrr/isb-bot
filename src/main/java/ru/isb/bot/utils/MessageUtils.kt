@@ -11,15 +11,17 @@ class MessageUtils : Logging {
 
     companion object {
 
+        private val regex = setOf(Regex("```"), Regex("/*/*"), Regex("__"), Regex("~~"), Regex("||"))
+
         fun formatMessage(scheduleDTOs: List<ScheduleDTO>?): String {
-            var message = "<b>Расписание занятий!</b>\n"
+            var message = "**Расписание занятий!**\n"
             val mapSchedules = parseDTO(scheduleDTOs)
             if (mapSchedules.isNotEmpty()) {
                 mapSchedules.forEach { (k: Long, v: List<ScheduleDTO>) ->
-                    message += "<b>${mapSchedules[k]?.get(0)?.weekday_name} ${mapSchedules[k]?.get(0)?.date_start_text}</b>\n"
+                    message += "**${mapSchedules[k]?.get(0)?.weekday_name} ${mapSchedules[k]?.get(0)?.date_start_text}**\n"
                     v.forEach(Consumer { value: ScheduleDTO ->
-                        message += ("<b>${DateUtils.calcTimeDiscipline(value.daytime_name)}</b>\n" +
-                                "<b>${value.cabinet_fullnumber_wotype}</b> " +
+                        message += ("**${DateUtils.calcTimeDiscipline(value.daytime_name)}**\n" +
+                                "**${value.cabinet_fullnumber_wotype}** " +
                                 "${value.discipline_name} " +
                                 "${value.teacher_fio?.let { "(${it}) " }}" +
                                 "(${(if (value.notes?.let { it != "." } == true) value.notes + "!" else value.classtype_short)})\n")
@@ -58,7 +60,7 @@ class MessageUtils : Logging {
         }
 
         fun textSplitter(text: String): List<String> {
-            val maxLength = 4096
+            val maxLength = 4090
             if (text.length < maxLength) {
                 return listOf(text)
             }
@@ -73,17 +75,38 @@ class MessageUtils : Logging {
                     }
                     currentLine += word
                 } else {
-                    result.add(currentLine)
+                    result.add(addEndString4090(currentLine))
                     currentLine = word
                 }
             }
 
             // Добавьте последнюю строку (если есть)
             if (currentLine.isNotEmpty()) {
-                result.add(currentLine)
+                result.add(addStartString4090(currentLine))
             }
             return result
         }
+
+        private fun addEndString4090(input: String): String {
+            regex.forEach { regex ->
+                return "${unclosedSymbols(input, regex)}${regex.pattern}"
+            }
+            return input;
+        }
+
+        private fun addStartString4090(input: String): String {
+            regex.forEach { regex ->
+                return "${regex.pattern}${unclosedSymbols(input, regex)}"
+            }
+            return input;
+        }
+
+        private fun unclosedSymbols(input: String, regex: Regex) : String =
+            regex.findAll(input)
+                .filter { matchResult -> matchResult.range.last % 2 != 0 }
+                .map { matchResult -> matchResult.value }
+                .joinToString {regex.pattern}
+
 
     }
 

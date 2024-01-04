@@ -15,13 +15,14 @@ class ChatGPTSenderDTO {
 
     var messages: MutableList<Message> = mutableListOf()
 
-    val model = "gpt-3.5-turbo"
+    val model = "gpt-3.5-turbo-16k-0613"
 
-    fun setContent(content: String?) {
+    fun setContent(content: String) : ChatGPTSenderDTO {
         val message = Message()
         message.role = "user"
         message.content = content
         messages.add(message)
+        return this;
     }
 
 }

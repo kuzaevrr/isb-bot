@@ -1,10 +1,9 @@
 package ru.isb.bot.clients
 
+import com.google.gson.Gson
 import lombok.SneakyThrows
-import okhttp3.MediaType
+import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.apache.logging.log4j.kotlin.Logging
 import org.springframework.beans.factory.annotation.Value
@@ -12,6 +11,8 @@ import org.springframework.stereotype.Component
 import ru.isb.bot.dto.ChatGPTReceiptDTO
 import ru.isb.bot.dto.ChatGPTSenderDTO
 import ru.isb.bot.utils.JsonUtils
+import java.io.IOException
+import java.lang.Exception
 import java.util.concurrent.TimeUnit
 
 @Component
@@ -32,11 +33,9 @@ class ChatGPTClientImpl : ChatGPTClient, Logging {
             .retryOnConnectionFailure(false)
             .build()
 
-        val chatGPTSenderDTO = ChatGPTSenderDTO()
-        chatGPTSenderDTO.setContent(message)
         logger.info(message)
 
-        val json = JsonUtils.parseObjectToString(chatGPTSenderDTO)
+        val json = JsonUtils.parseObjectToString(ChatGPTSenderDTO().setContent(message))
         logger.info(json)
 
         val request = Request.Builder()
@@ -47,23 +46,26 @@ class ChatGPTClientImpl : ChatGPTClient, Logging {
             .header("Accept-Encoding", "identity")
             .build()
 
-        // Отправить запрос и получить ответ
-        val response = client.newCall(request).execute()
-        return if (response.isSuccessful) {
-            try {
-                val dto = JsonUtils.parseStringJsonToObject(
-                    response.body?.string(), ChatGPTReceiptDTO::class.java
-                )
 
-                dto?.choices?.let { it[0].message?.content }
-                        ?: "ChatGPT отправил не известный объект. ${response.body?.string()}"
-            } catch (e: Exception) {
-                throw RuntimeException("Ошибка парсинга body от ChatGPT: " + e.message)
+        // Отправить запрос и получить ответ
+        val response: Response = client.newCall(request).execute()
+        response.use { it ->
+            if (it.isSuccessful) {
+                it.body?.use { responseBody ->
+                    val dto = Gson().fromJson(responseBody.string(), ChatGPTReceiptDTO::class.java)
+                    return dto?.choices?.let { it[0].message?.content }
+                        ?: "ChatGPT отправил не известный объект. ${responseBody.string()}"
+                }
+            } else {
+                return "Код ошибки: ${it.code}\n" +
+                        it.body?.use {
+                            "Текст ошибки: ${it.string()}"
+                        }
             }
-        } else {
-            "Код ошибки: ${response.code}\n" +
-            "Текст ошибки: ${response.body?.string()}"
         }
+
+        return "GPT отдал пустой ответ"
     }
+
 
 }

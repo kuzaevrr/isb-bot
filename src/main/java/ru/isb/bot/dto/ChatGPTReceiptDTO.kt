@@ -12,9 +12,9 @@ import lombok.Setter
 @JsonDeserialize
 @JsonSerialize
 @JsonIgnoreProperties
-class ChatGPTReceiptDTO(
+class ChatGPTReceiptDTO {
+
     @JsonIgnore
     var choices: List<Choice>? = null
-) {
 
 }
