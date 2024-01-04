@@ -11,7 +11,7 @@ class MessageUtils : Logging {
 
     companion object {
 
-        private val regex = setOf(Regex("```"), Regex("/*/*/*"), Regex("___"), Regex("~~~"), Regex("|||"))
+        private val regex = setOf(Regex("```"), Regex("\\*\\*\\*"), Regex("___"), Regex("~~~"), Regex("\\|\\|\\|"))
 
         fun formatMessage(scheduleDTOs: List<ScheduleDTO>?): String {
             var message = "***Расписание занятий!***\n"
