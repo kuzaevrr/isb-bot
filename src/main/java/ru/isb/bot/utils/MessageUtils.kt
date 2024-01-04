@@ -11,17 +11,17 @@ class MessageUtils : Logging {
 
     companion object {
 
-        private val regex = setOf(Regex("```"), Regex("/*/*"), Regex("__"), Regex("~~"), Regex("||"))
+        private val regex = setOf(Regex("```"), Regex("/*/*/*"), Regex("___"), Regex("~~~"), Regex("|||"))
 
         fun formatMessage(scheduleDTOs: List<ScheduleDTO>?): String {
-            var message = "**Расписание занятий!**\n"
+            var message = "***Расписание занятий!***\n"
             val mapSchedules = parseDTO(scheduleDTOs)
             if (mapSchedules.isNotEmpty()) {
                 mapSchedules.forEach { (k: Long, v: List<ScheduleDTO>) ->
-                    message += "**${mapSchedules[k]?.get(0)?.weekday_name} ${mapSchedules[k]?.get(0)?.date_start_text}**\n"
+                    message += "***${mapSchedules[k]?.get(0)?.weekday_name} ${mapSchedules[k]?.get(0)?.date_start_text}***\n"
                     v.forEach(Consumer { value: ScheduleDTO ->
-                        message += ("**${DateUtils.calcTimeDiscipline(value.daytime_name)}**\n" +
-                                "**${value.cabinet_fullnumber_wotype}** " +
+                        message += ("***${DateUtils.calcTimeDiscipline(value.daytime_name)}***\n" +
+                                "***${value.cabinet_fullnumber_wotype}*** " +
                                 "${value.discipline_name} " +
                                 "${value.teacher_fio?.let { "(${it}) " }}" +
                                 "(${(if (value.notes?.let { it != "." } == true) value.notes + "!" else value.classtype_short)})\n")

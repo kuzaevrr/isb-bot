@@ -1300,3 +1300,332 @@ kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
 
 kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
 
+2024-01-04 22:08:56.622 ERROR 338277 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 22:09:10.476  INFO 346536 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 346536 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:09:10.478  INFO 346536 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:09:10.864  INFO 346536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:09:10.868  INFO 346536 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:09:10.869  INFO 346536 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:09:10.907  INFO 346536 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:09:10.907  INFO 346536 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 400 ms
+2024-01-04 22:09:11.606  INFO 346536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:09:11.612  INFO 346536 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.294 seconds (JVM running for 1.517)
+2024-01-04 22:09:40.189  INFO 347072 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 347072 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:09:40.191  INFO 347072 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:09:40.567  INFO 347072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:09:40.571  INFO 347072 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:09:40.571  INFO 347072 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:09:40.611  INFO 347072 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:09:40.611  INFO 347072 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 397 ms
+2024-01-04 22:09:41.195  INFO 347072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:09:41.201  INFO 347072 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.184 seconds (JVM running for 1.381)
+2024-01-04 22:17:16.699  INFO 353058 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 353058 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:17:16.700  INFO 353058 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:17:17.081  INFO 353058 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:17:17.086  INFO 353058 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:17:17.086  INFO 353058 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:17:17.124  INFO 353058 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:17:17.124  INFO 353058 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 401 ms
+2024-01-04 22:17:17.783  INFO 353058 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:17:17.789  INFO 353058 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.265 seconds (JVM running for 1.457)
+2024-01-04 22:17:26.218  INFO 353058 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Info executeMessages: @elektrik_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @V0xP0puli @vladka_teb @polibuu @Desert567
+2024-01-04 22:17:26.220 ERROR 353058 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 74
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 74
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:135) ~[classes/:na]
+	at java.base/java.util.Collections$SingletonList.forEach(Collections.java:4966) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:133) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:91) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:72) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:61) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:48) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 22:19:04.464  INFO 353058 --- [ForkJoinPool.commonPool-worker-2] ru.isb.bot.Bot                           : Info executeMessages: @elektrik_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @V0xP0puli @vladka_teb @polibuu @Desert567
+2024-01-04 22:19:04.465 ERROR 353058 --- [ForkJoinPool.commonPool-worker-2] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 74
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 74
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:135) ~[classes/:na]
+	at java.base/java.util.Collections$SingletonList.forEach(Collections.java:4966) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:133) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:91) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:72) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:61) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:48) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 22:20:37.734  INFO 355752 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 355752 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:20:37.736  INFO 355752 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:20:38.124  INFO 355752 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:20:38.128  INFO 355752 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:20:38.129  INFO 355752 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:20:38.167  INFO 355752 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:20:38.167  INFO 355752 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 401 ms
+2024-01-04 22:20:38.736  INFO 355752 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:20:38.742  INFO 355752 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.188 seconds (JVM running for 1.377)
+2024-01-04 22:20:46.800  INFO 355752 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Info executeMessages: /@elektrik_gut /@markin_ka /@RA_prof /@Mr_Ket1997 /@Yureskii /@V0xP0puli /@vladka_teb /@polibuu /@Desert567
+2024-01-04 22:20:46.802 ERROR 355752 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 81
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 81
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:135) ~[classes/:na]
+	at java.base/java.util.Collections$SingletonList.forEach(Collections.java:4966) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:133) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:91) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:72) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:61) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:48) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 22:21:01.643  INFO 356254 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 356254 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:21:01.647  INFO 356254 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:21:02.007  INFO 356254 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:21:02.012  INFO 356254 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:21:02.013  INFO 356254 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:21:02.054  INFO 356254 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:21:02.054  INFO 356254 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 382 ms
+2024-01-04 22:21:02.622  INFO 356254 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:21:02.627  INFO 356254 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.16 seconds (JVM running for 1.358)
+2024-01-04 22:21:04.872  INFO 356254 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Info executeMessages: /@elektrik_gut /@markin_ka /@RA_prof /@Mr_Ket1997 /@Yureskii /@V0xP0puli /@vladka_teb /@polibuu \@Desert567
+2024-01-04 22:21:04.874 ERROR 356254 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 81
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 81
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:135) ~[classes/:na]
+	at java.base/java.util.Collections$SingletonList.forEach(Collections.java:4966) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:133) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:91) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:72) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:61) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:48) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 22:21:12.246  INFO 356539 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 356539 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:21:12.247  INFO 356539 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:21:12.614  INFO 356539 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:21:12.618  INFO 356539 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:21:12.619  INFO 356539 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:21:12.659  INFO 356539 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:21:12.659  INFO 356539 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 389 ms
+2024-01-04 22:21:13.318  INFO 356539 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:21:13.325  INFO 356539 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.234 seconds (JVM running for 1.45)
+2024-01-04 22:21:14.908  INFO 356539 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Info executeMessages: /@elektrik_gut /@markin_ka /@RA_prof /@Mr_Ket1997 /@Yureskii /@V0xP0puli /@vladka_teb /@polibuu @@Desert567
+2024-01-04 22:21:14.910 ERROR 356539 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 81
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 81
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:135) ~[classes/:na]
+	at java.base/java.util.Collections$SingletonList.forEach(Collections.java:4966) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:133) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:91) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:72) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:61) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:48) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 22:21:35.616  INFO 357005 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 357005 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:21:35.618  INFO 357005 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:21:36.007  INFO 357005 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:21:36.011  INFO 357005 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:21:36.012  INFO 357005 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:21:36.051  INFO 357005 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:21:36.051  INFO 357005 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 404 ms
+2024-01-04 22:21:36.661  INFO 357005 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:21:36.667  INFO 357005 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.219 seconds (JVM running for 1.416)
+2024-01-04 22:22:22.356  INFO 357707 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 357707 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:22:22.357  INFO 357707 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:22:22.750  INFO 357707 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:22:22.755  INFO 357707 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:22:22.755  INFO 357707 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:22:22.794  INFO 357707 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:22:22.794  INFO 357707 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 414 ms
+2024-01-04 22:22:23.478  INFO 357707 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:22:23.484  INFO 357707 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.281 seconds (JVM running for 1.493)
+2024-01-04 22:22:25.150  INFO 357707 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Info executeMessages: @elektrik_gut
+ @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @V0xP0puli @vladka_teb @polibuu @Desert567
+2024-01-04 22:22:25.155 ERROR 357707 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 75
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 75
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:135) ~[classes/:na]
+	at java.base/java.util.Collections$SingletonList.forEach(Collections.java:4966) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:133) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:91) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:72) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:61) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:48) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 22:22:57.916  INFO 358315 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 358315 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:22:57.918  INFO 358315 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:22:58.289  INFO 358315 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:22:58.294  INFO 358315 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:22:58.294  INFO 358315 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:22:58.335  INFO 358315 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:22:58.335  INFO 358315 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 394 ms
+2024-01-04 22:22:58.893  INFO 358315 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:22:58.898  INFO 358315 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.144 seconds (JVM running for 1.334)
+2024-01-04 22:23:01.479  INFO 358315 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Info executeMessages: @elektrik/_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @V0xP0puli @vladka_teb @polibuu @Desert567
+2024-01-04 22:23:01.481 ERROR 358315 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 75
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 75
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:135) ~[classes/:na]
+	at java.base/java.util.Collections$SingletonList.forEach(Collections.java:4966) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:133) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:91) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:72) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:61) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:48) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 22:23:10.005  INFO 358611 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 358611 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:23:10.006  INFO 358611 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:23:10.365  INFO 358611 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:23:10.369  INFO 358611 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:23:10.369  INFO 358611 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:23:10.408  INFO 358611 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:23:10.408  INFO 358611 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 378 ms
+2024-01-04 22:23:10.970  INFO 358611 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:23:10.976  INFO 358611 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.125 seconds (JVM running for 1.325)
+2024-01-04 22:23:25.356  INFO 358958 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 358958 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:23:25.357  INFO 358958 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:23:25.737  INFO 358958 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:23:25.743  INFO 358958 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:23:25.743  INFO 358958 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:23:25.787  INFO 358958 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:23:25.787  INFO 358958 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 405 ms
+2024-01-04 22:23:26.368  INFO 358958 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:23:26.373  INFO 358958 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.179 seconds (JVM running for 1.379)
+2024-01-04 22:23:43.291  INFO 359305 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 359305 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:23:43.292  INFO 359305 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:23:43.666  INFO 359305 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:23:43.671  INFO 359305 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:23:43.671  INFO 359305 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:23:43.713  INFO 359305 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:23:43.714  INFO 359305 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 397 ms
+2024-01-04 22:23:44.312  INFO 359305 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:23:44.318  INFO 359305 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.194 seconds (JVM running for 1.396)
+2024-01-04 22:24:39.413  INFO 359305 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши очень  объемный код на 5 популярных языках
+2024-01-04 22:24:39.416  INFO 359305 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши очень  объемный код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 22:25:13.340  INFO 359305 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши очень  объемный код на 5 популярных языках
+2024-01-04 22:25:13.340  INFO 359305 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши очень  объемный код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 22:27:12.188  INFO 359305 --- [ForkJoinPool.commonPool-worker-2] ru.isb.bot.clients.ChatGPTClientImpl     : Расскажи код в 5000 симоволов
+2024-01-04 22:27:12.188  INFO 359305 --- [ForkJoinPool.commonPool-worker-2] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Расскажи код в 5000 симоволов"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 22:27:39.746  INFO 362610 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 362610 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:27:39.748  INFO 362610 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:27:40.147  INFO 362610 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:27:40.152  INFO 362610 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:27:40.152  INFO 362610 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:27:40.193  INFO 362610 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:27:40.193  INFO 362610 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 416 ms
+2024-01-04 22:27:40.809  INFO 362610 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:27:40.815  INFO 362610 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.232 seconds (JVM running for 1.45)
+2024-01-04 22:35:46.814  INFO 369161 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 369161 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:35:46.815  INFO 369161 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:35:47.182  INFO 369161 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:35:47.186  INFO 369161 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:35:47.186  INFO 369161 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:35:47.226  INFO 369161 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:35:47.226  INFO 369161 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 387 ms
+2024-01-04 22:35:47.842  INFO 369161 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:35:47.849  INFO 369161 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.222 seconds (JVM running for 1.434)
+2024-01-04 22:35:53.607  INFO 369396 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 369396 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 22:35:53.608  INFO 369396 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 22:35:53.978  INFO 369396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 22:35:53.983  INFO 369396 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 22:35:53.983  INFO 369396 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 22:35:54.025  INFO 369396 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 22:35:54.025  INFO 369396 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 394 ms
+2024-01-04 22:35:54.620  INFO 369396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 22:35:54.625  INFO 369396 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.173 seconds (JVM running for 1.378)
+2024-01-04 22:36:34.424 ERROR 369396 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 22:36:49.863 ERROR 369396 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+

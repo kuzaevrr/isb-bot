@@ -33,11 +33,7 @@ class ChatGPTClientImpl : ChatGPTClient, Logging {
             .retryOnConnectionFailure(false)
             .build()
 
-        logger.info(message)
-
         val json = JsonUtils.parseObjectToString(ChatGPTSenderDTO().setContent(message))
-        logger.info(json)
-
         val request = Request.Builder()
             .url("http://127.0.0.1:1337/v1/chat/completions")
             .post(json.toRequestBody(JSON))

@@ -17,7 +17,6 @@ import ru.isb.bot.services.MessageService
 import ru.isb.bot.services.MessageServiceImpl
 import ru.isb.bot.utils.MessageUtils.Companion.textSplitter
 import java.util.concurrent.CompletableFuture
-import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import java.util.function.Consumer
 
@@ -40,6 +39,8 @@ class Bot(
     override fun getBotUsername(): String = botUsername
     override fun getBotToken(): String = botToken
 
+    private var job: Job? = null;
+
     @SneakyThrows
     override fun onUpdateReceived(update: Update) {
         val executor = Executors.newCachedThreadPool()
@@ -58,12 +59,14 @@ class Bot(
     private fun asyncOnUpdateReceived(update: Update) {
         try {
             if (update.hasMessage()) {
-                GlobalScope.launch { typing(update.message.chatId) }
+                job = GlobalScope.launch { typing(update.message.chatId) }
                 switchMessage(update)
             }
         } catch (e: Exception) {
             logger.error("Error onUpdateReceived ${e.message}", e)
             sendMessageException(e, update.message.chatId)
+        } finally {
+            job?.cancel()
         }
     }
 
@@ -90,7 +93,7 @@ class Bot(
             )
 
             Commands.ALL, Commands.ALL_GROUP, Commands.ALL_LINK -> executeMessages(
-                "@elektrik_gut @markin_ka @RA_prof @Mr_Ket1997 @Yureskii @V0xP0puli @vladka_teb @polibuu @Desert567",
+                "@elektrik\\_gut @markin\\_ka @RA\\_prof @Mr\\_Ket1997 @Yureskii @V0xP0puli @vladka\\_teb @polibuu @Desert567",
                 update.message.chatId
             )
 
@@ -117,14 +120,16 @@ class Bot(
 
     private suspend fun typing(chatId: Long) {
         try {
-            execute(
-                SendChatAction(
-                    chatId.toString(),
-                    "TYPING",
-                    Thread.currentThread().id.toInt()
+            while (job?.isActive == true) {
+                execute(
+                    SendChatAction(
+                        chatId.toString(),
+                        "TYPING",
+                        Thread.currentThread().id.toInt()
+                    )
                 )
-            )
-            delay(3000)
+                delay(3000)
+            }
         } catch (e: Exception) {
             logger.error("Typing message error: ${e.message}", e)
         }

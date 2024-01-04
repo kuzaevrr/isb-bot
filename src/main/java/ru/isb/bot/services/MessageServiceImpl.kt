@@ -62,7 +62,7 @@ class MessageServiceImpl(
 
         } else {
             return """
-                     <b>Ошибка на стороне сервера ПГАТУ!</b>
+                     ***Ошибка на стороне сервера ПГАТУ!***
                      URL: ${StudyScheduleClientImpl.URL}
                      Код ошибки: ${response.code}
                  """.trimIndent() +
@@ -70,13 +70,13 @@ class MessageServiceImpl(
                                              Текст ошибки: ${response.body?.string()}
                                             """.trimIndent()
                     else null) +
-                    "\n<b>Необходимо написать Мелехину Максиму Игоревичу на учебном портале.</b>"
+                    "\n***Необходимо написать Мелехину Максиму Игоревичу на учебном портале.***"
         }
     }
 
     override fun getListGroup(): String {
         list.sorted();
-        return "<b>Список группы: </b>\n" +
+        return "***Список группы: ***\n" +
                 IntStream.range(0, list.size)
                     .mapToObj { i: Int ->
                         (i + 1).toString() + ") " + list[i] + "\n"
