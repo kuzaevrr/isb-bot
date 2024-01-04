@@ -89,24 +89,25 @@ class MessageUtils : Logging {
 
         private fun addEndString4090(input: String): String {
             regex.forEach { regex ->
-                return "${unclosedSymbols(input, regex)}${regex.pattern}"
+                if (unclosedSymbols(input, regex)) {
+                    return "${input}${regex.pattern}"
+                }
             }
             return input;
         }
 
         private fun addStartString4090(input: String): String {
             regex.forEach { regex ->
-                return "${regex.pattern}${unclosedSymbols(input, regex)}"
+                if (unclosedSymbols(input, regex)) {
+                    return "${regex.pattern}${input}"
+                }
             }
             return input;
         }
 
-        private fun unclosedSymbols(input: String, regex: Regex) : String =
+        private fun unclosedSymbols(input: String, regex: Regex) : Boolean =
             regex.findAll(input)
-                .filter { matchResult -> matchResult.range.last % 2 != 0 }
-                .map { matchResult -> matchResult.value }
-                .joinToString {regex.pattern}
-
+                .any{ matchResult -> matchResult.range.last % 2 != 0 }
 
     }
 
