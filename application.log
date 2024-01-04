@@ -1,0 +1,1302 @@
+2024-01-04 18:57:07.020  INFO 193593 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 193593 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 18:57:07.021  INFO 193593 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 18:57:07.451  INFO 193593 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-04 18:57:07.455  INFO 193593 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 18:57:07.455  INFO 193593 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 18:57:07.493  INFO 193593 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 18:57:07.493  INFO 193593 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 448 ms
+2024-01-04 18:57:07.528  WARN 193593 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bot' defined in file [/home/kuzaevrr/IdeaProjects/isb-bot/target/classes/ru/isb/bot/Bot.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'messageServiceImpl' defined in file [/home/kuzaevrr/IdeaProjects/isb-bot/target/classes/ru/isb/bot/services/MessageServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'nextcloudClientImpl': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'nextcloud.host' in value "${nextcloud.host}"
+2024-01-04 18:57:07.529  INFO 193593 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-01-04 18:57:07.535  INFO 193593 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-01-04 18:57:07.543 ERROR 193593 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bot' defined in file [/home/kuzaevrr/IdeaProjects/isb-bot/target/classes/ru/isb/bot/Bot.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'messageServiceImpl' defined in file [/home/kuzaevrr/IdeaProjects/isb-bot/target/classes/ru/isb/bot/services/MessageServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'nextcloudClientImpl': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'nextcloud.host' in value "${nextcloud.host}"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-2.7.4.jar:2.7.4]
+	at ru.isb.bot.AppKt.main(App.kt:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'messageServiceImpl' defined in file [/home/kuzaevrr/IdeaProjects/isb-bot/target/classes/ru/isb/bot/services/MessageServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'nextcloudClientImpl': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'nextcloud.host' in value "${nextcloud.host}"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-5.3.23.jar:5.3.23]
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'nextcloudClientImpl': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'nextcloud.host' in value "${nextcloud.host}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:405) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-5.3.23.jar:5.3.23]
+	... 33 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'nextcloud.host' in value "${nextcloud.host}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180) ~[spring-core-5.3.23.jar:5.3.23]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126) ~[spring-core-5.3.23.jar:5.3.23]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239) ~[spring-core-5.3.23.jar:5.3.23]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210) ~[spring-core-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:191) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:936) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1332) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:656) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:639) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.3.23.jar:5.3.23]
+	... 45 common frames omitted
+
+2024-01-04 20:18:42.361  INFO 253755 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 253755 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:18:42.363  INFO 253755 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:18:42.775  INFO 253755 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-04 20:18:42.779  INFO 253755 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:18:42.780  INFO 253755 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:18:42.822  INFO 253755 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:18:42.822  INFO 253755 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 427 ms
+2024-01-04 20:18:43.529  WARN 253755 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat server
+2024-01-04 20:18:43.534  INFO 253755 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-01-04 20:18:43.540  INFO 253755 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-01-04 20:18:43.552 ERROR 253755 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat server
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:181) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:356) ~[spring-context-5.3.23.jar:5.3.23]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:155) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:123) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:935) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-2.7.4.jar:2.7.4]
+	at ru.isb.bot.AppKt.main(App.kt:10) ~[classes/:na]
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat server
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:229) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:43) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:178) ~[spring-context-5.3.23.jar:5.3.23]
+	... 14 common frames omitted
+Caused by: java.lang.IllegalArgumentException: standardService.connector.startFailed
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:238) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:282) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:213) ~[spring-boot-2.7.4.jar:2.7.4]
+	... 16 common frames omitted
+Caused by: org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1077) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:234) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	... 18 common frames omitted
+Caused by: java.net.BindException: Адрес уже используется
+	at java.base/sun.nio.ch.Net.bind0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.bind(Net.java:555) ~[na:na]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337) ~[na:na]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294) ~[na:na]
+	at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:275) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:230) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1227) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1313) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:614) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1074) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	... 20 common frames omitted
+
+2024-01-04 20:19:01.530  INFO 254210 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 254210 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:19:01.531  INFO 254210 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:19:01.903  INFO 254210 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 20:19:01.908  INFO 254210 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:19:01.908  INFO 254210 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:19:01.947  INFO 254210 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:19:01.947  INFO 254210 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 391 ms
+2024-01-04 20:19:02.534  INFO 254210 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 20:19:02.541  INFO 254210 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.165 seconds (JVM running for 1.357)
+2024-01-04 20:19:13.050  INFO 254210 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 20:19:13.052  INFO 254210 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo"}
+2024-01-04 20:19:28.726 ERROR 254210 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error onUpdateReceived Ошибка парсинга body от ChatGPT: closed
+
+java.lang.RuntimeException: Ошибка парсинга body от ChatGPT: closed
+	at ru.isb.bot.clients.ChatGPTClientImpl.getAnswerGPT(ChatGPTClientImpl.kt:61) ~[classes/:na]
+	at ru.isb.bot.services.MessageServiceImpl.getAnswerGPTMessage(MessageServiceImpl.kt:89) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:108) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 20:19:29.091 ERROR 254210 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 20:20:44.072  INFO 255733 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 255733 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:20:44.073  INFO 255733 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:20:44.453  INFO 255733 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 20:20:44.458  INFO 255733 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:20:44.459  INFO 255733 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:20:44.498  INFO 255733 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:20:44.498  INFO 255733 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 401 ms
+2024-01-04 20:20:45.072  INFO 255733 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 20:20:45.077  INFO 255733 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.178 seconds (JVM running for 1.384)
+2024-01-04 20:21:04.168  INFO 255733 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 20:21:04.170  INFO 255733 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo"}
+2024-01-04 20:21:05.816 ERROR 255733 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 20:21:30.622  INFO 256500 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 256500 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:21:30.623  INFO 256500 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:21:30.997  INFO 256500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 20:21:31.002  INFO 256500 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:21:31.003  INFO 256500 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:21:31.045  INFO 256500 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:21:31.045  INFO 256500 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 398 ms
+2024-01-04 20:21:31.641  INFO 256500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 20:21:31.647  INFO 256500 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.177 seconds (JVM running for 1.39)
+2024-01-04 20:21:38.312  INFO 256500 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 20:21:38.313  INFO 256500 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":""}
+2024-01-04 20:21:38.834 ERROR 256500 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 20:22:13.912  INFO 257184 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 257184 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:22:13.914  INFO 257184 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:22:14.312  INFO 257184 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 20:22:14.316  INFO 257184 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:22:14.317  INFO 257184 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:22:14.358  INFO 257184 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:22:14.358  INFO 257184 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 414 ms
+2024-01-04 20:22:14.940  INFO 257184 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 20:22:14.946  INFO 257184 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.191 seconds (JVM running for 1.392)
+2024-01-04 20:22:19.033  INFO 257184 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 20:22:19.036  INFO 257184 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k\t"}
+2024-01-04 20:22:19.378 ERROR 257184 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 20:23:38.229  INFO 258523 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 258523 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:23:38.230  INFO 258523 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:23:38.596  INFO 258523 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 20:23:38.600  INFO 258523 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:23:38.600  INFO 258523 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:23:38.644  INFO 258523 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:23:38.644  INFO 258523 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 389 ms
+2024-01-04 20:23:39.251  INFO 258523 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 20:23:39.257  INFO 258523 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.184 seconds (JVM running for 1.38)
+2024-01-04 20:23:42.102  INFO 258523 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 20:23:42.104  INFO 258523 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 20:23:48.940 ERROR 258523 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error onUpdateReceived Ошибка парсинга body от ChatGPT: closed
+
+java.lang.RuntimeException: Ошибка парсинга body от ChatGPT: closed
+	at ru.isb.bot.clients.ChatGPTClientImpl.getAnswerGPT(ChatGPTClientImpl.kt:63) ~[classes/:na]
+	at ru.isb.bot.services.MessageServiceImpl.getAnswerGPTMessage(MessageServiceImpl.kt:89) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:108) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 20:23:49.097 ERROR 258523 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 20:25:21.085  INFO 259990 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 259990 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:25:21.086  INFO 259990 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:25:21.544  INFO 259990 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 20:25:21.550  INFO 259990 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:25:21.550  INFO 259990 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:25:21.594  INFO 259990 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:25:21.594  INFO 259990 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 481 ms
+2024-01-04 20:25:22.236  INFO 259990 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 20:25:22.242  INFO 259990 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.325 seconds (JVM running for 1.541)
+2024-01-04 20:25:26.608  INFO 259990 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 20:25:26.610  INFO 259990 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 20:25:30.063 ERROR 259990 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error onUpdateReceived Ошибка парсинга body от ChatGPT: closed
+
+java.lang.RuntimeException: Ошибка парсинга body от ChatGPT: closed
+	at ru.isb.bot.clients.ChatGPTClientImpl.getAnswerGPT(ChatGPTClientImpl.kt:63) ~[classes/:na]
+	at ru.isb.bot.services.MessageServiceImpl.getAnswerGPTMessage(MessageServiceImpl.kt:89) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:109) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:81) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 20:26:07.022  INFO 260771 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 260771 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:26:07.023  INFO 260771 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:26:07.397  INFO 260771 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 20:26:07.401  INFO 260771 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:26:07.402  INFO 260771 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:26:07.441  INFO 260771 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:26:07.441  INFO 260771 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 392 ms
+2024-01-04 20:26:08.006  INFO 260771 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 20:26:08.011  INFO 260771 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.145 seconds (JVM running for 1.345)
+2024-01-04 20:26:15.669  INFO 260771 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 20:26:15.671  INFO 260771 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 20:26:19.111  INFO 260771 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {
+    "id": "chatcmpl-GGsGWFZ3KtNviNxB3IrZNPiQTexn",
+    "object": "chat.completion",
+    "created": 1704381979,
+    "model": "gpt-3.5-turbo-16k",
+    "provider": {
+        "name": "FreeGpt",
+        "url": "https://freegpts1.aifree.site/"
+    },
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "\u0423 \u043c\u0435\u043d\u044f \u0445\u043e\u0440\u043e\u0448\u043e, \u0441\u043f\u0430\u0441\u0438\u0431\u043e! \u0410 \u043a\u0430\u043a \u0443 \u0432\u0430\u0441?"
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+    }
+}
+2024-01-04 20:26:19.112 ERROR 260771 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error onUpdateReceived Ошибка парсинга body от ChatGPT: closed
+
+java.lang.RuntimeException: Ошибка парсинга body от ChatGPT: closed
+	at ru.isb.bot.clients.ChatGPTClientImpl.getAnswerGPT(ChatGPTClientImpl.kt:64) ~[classes/:na]
+	at ru.isb.bot.services.MessageServiceImpl.getAnswerGPTMessage(MessageServiceImpl.kt:89) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:109) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:81) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 20:28:12.850  INFO 262548 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 262548 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:28:12.851  INFO 262548 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:28:13.231  INFO 262548 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 20:28:13.235  INFO 262548 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:28:13.236  INFO 262548 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:28:13.275  INFO 262548 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:28:13.276  INFO 262548 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 401 ms
+2024-01-04 20:28:13.842  INFO 262548 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 20:28:13.847  INFO 262548 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.148 seconds (JVM running for 1.339)
+2024-01-04 20:28:18.838  INFO 262548 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 20:28:18.841  INFO 262548 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 20:28:23.769  INFO 262548 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {
+    "id": "chatcmpl-G3gBU9Skxtc9l3zMrvM0wjGnZoEF",
+    "object": "chat.completion",
+    "created": 1704382103,
+    "model": "gpt-3.5-turbo-16k",
+    "provider": {
+        "name": "OnlineGpt",
+        "url": "https://onlinegpt.org"
+    },
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "\u041f\u0440\u0438\u0432\u0435\u0442! \u0421\u043f\u0430\u0441\u0438\u0431\u043e, \u0447\u0442\u043e \u0441\u043f\u0440\u043e\u0441\u0438\u043b(\u0430)! \u041a\u0430\u043a \u044f \u043c\u043e\u0433\u0443 \u043f\u043e\u043c\u043e\u0447\u044c \u0442\u0435\u0431\u0435 \u0441\u0435\u0433\u043e\u0434\u043d\u044f? \u0423 \u043c\u0435\u043d\u044f \u0432\u0441\u0451 \u0445\u043e\u0440\u043e\u0448\u043e, \u044f \u0433\u043e\u0442\u043e\u0432 \u043f\u043e\u043c\u043e\u0433\u0430\u0442\u044c \u0438 \u0431\u044b\u0442\u044c \u043f\u043e\u043b\u0435\u0437\u043d\u044b\u043c!"
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+    }
+}
+2024-01-04 20:28:23.771 ERROR 262548 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error onUpdateReceived Ошибка парсинга body от ChatGPT: closed
+
+java.lang.RuntimeException: Ошибка парсинга body от ChatGPT: closed
+	at ru.isb.bot.clients.ChatGPTClientImpl.getAnswerGPT(ChatGPTClientImpl.kt:64) ~[classes/:na]
+	at ru.isb.bot.services.MessageServiceImpl.getAnswerGPTMessage(MessageServiceImpl.kt:89) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:108) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 20:28:23.923 ERROR 262548 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 20:37:10.944  INFO 269918 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 269918 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:37:10.946  INFO 269918 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:37:11.349  INFO 269918 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 20:37:11.354  INFO 269918 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:37:11.354  INFO 269918 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:37:11.393  INFO 269918 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:37:11.393  INFO 269918 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 423 ms
+2024-01-04 20:37:11.983  INFO 269918 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 20:37:11.989  INFO 269918 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.198 seconds (JVM running for 1.388)
+2024-01-04 20:37:13.933  INFO 269918 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 20:37:13.936  INFO 269918 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 20:37:19.179  INFO 269918 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {
+    "id": "chatcmpl-XKRKmaClHUUDQqexu2CwEhD5yv85",
+    "object": "chat.completion",
+    "created": 1704382639,
+    "model": "gpt-3.5-turbo-16k",
+    "provider": {
+        "name": "FreeGpt",
+        "url": "https://freegpts1.aifree.site/"
+    },
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "\u0423 \u043c\u0435\u043d\u044f \u0432\u0441\u0435\u0433\u043e \u043b\u0438\u0448\u044c \u0432\u0438\u0440\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0439 \u043f\u043e\u043c\u043e\u0449\u043d\u0438\u043a, \u043f\u043e\u044d\u0442\u043e\u043c\u0443 \u043c\u043d\u0435 \u043d\u0435\u0447\u0435\u0433\u043e \u0441\u043a\u0430\u0437\u0430\u0442\u044c \u043e \u0441\u0432\u043e\u0438\u0445 \u0434\u0435\u043b\u0430\u0445. \u041d\u043e \u044f \u0433\u043e\u0442\u043e\u0432 \u043f\u043e\u043c\u043e\u0447\u044c \u0432\u0430\u043c \u0441 \u0432\u0430\u0448\u0438\u043c\u0438 \u0432\u043e\u043f\u0440\u043e\u0441\u0430\u043c\u0438 \u0438\u043b\u0438 \u0437\u0430\u0434\u0430\u0447\u0430\u043c\u0438! \u041a\u0430\u043a \u044f \u043c\u043e\u0433\u0443 \u0431\u044b\u0442\u044c \u043f\u043e\u043b\u0435\u0437\u0435\u043d?"
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+    }
+}
+2024-01-04 20:37:19.181 ERROR 269918 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error onUpdateReceived Ошибка парсинга body от ChatGPT: closed
+
+java.lang.RuntimeException: Ошибка парсинга body от ChatGPT: closed
+	at ru.isb.bot.clients.ChatGPTClientImpl.getAnswerGPT(ChatGPTClientImpl.kt:63) ~[classes/:na]
+	at ru.isb.bot.services.MessageServiceImpl.getAnswerGPTMessage(MessageServiceImpl.kt:89) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:108) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 20:37:19.348 ERROR 269918 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 20:41:43.117  INFO 273741 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 273741 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:41:43.119  INFO 273741 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:41:43.491  INFO 273741 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 20:41:43.495  INFO 273741 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:41:43.496  INFO 273741 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:41:43.538  INFO 273741 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:41:43.539  INFO 273741 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 395 ms
+2024-01-04 20:41:44.149  INFO 273741 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 20:41:44.155  INFO 273741 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.204 seconds (JVM running for 1.401)
+2024-01-04 20:41:50.866  INFO 273741 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 20:41:50.868  INFO 273741 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 20:41:57.552  INFO 273741 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {
+    "id": "chatcmpl-4Ki44MJLMQY1Z40rzmD4EnmUvyhj",
+    "object": "chat.completion",
+    "created": 1704382917,
+    "model": "gpt-3.5-turbo-16k",
+    "provider": {
+        "name": "OnlineGpt",
+        "url": "https://onlinegpt.org"
+    },
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "\u041f\u0440\u0438\u0432\u0435\u0442! \u042f \u0440\u0430\u0434, \u0447\u0442\u043e \u0442\u044b \u0441\u043f\u0440\u043e\u0441\u0438\u043b. \u041a\u0430\u043a \u0442\u0432\u043e\u0439 \u0434\u0435\u043d\u044c \u043f\u0440\u043e\u0445\u043e\u0434\u0438\u0442? \u0427\u0435\u043c \u044f \u043c\u043e\u0433\u0443 \u0442\u0435\u0431\u0435 \u043f\u043e\u043c\u043e\u0447\u044c \u0438\u043b\u0438 \u043f\u0440\u043e\u0441\u0442\u043e \u043f\u043e\u0431\u043e\u043b\u0442\u0430\u0442\u044c? \u042f \u0437\u0434\u0435\u0441\u044c, \u0447\u0442\u043e\u0431\u044b \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u0442\u0432\u043e\u044e \u0436\u0438\u0437\u043d\u044c \u043f\u0440\u043e\u0449\u0435 \u0438 \u0438\u043d\u0442\u0435\u0440\u0435\u0441\u043d\u0435\u0435!"
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+    }
+}
+2024-01-04 20:41:57.554 ERROR 273741 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : closed
+
+java.lang.IllegalStateException: closed
+	at okio.RealBufferedSource.select(RealBufferedSource.kt:218) ~[okio-jvm-3.0.0.jar:na]
+	at okhttp3.internal.Util.readBomAsCharset(Util.kt:265) ~[okhttp-4.10.0.jar:na]
+	at okhttp3.ResponseBody.string(ResponseBody.kt:187) ~[okhttp-4.10.0.jar:na]
+	at ru.isb.bot.clients.ChatGPTClientImpl.getAnswerGPT(ChatGPTClientImpl.kt:56) ~[classes/:na]
+	at ru.isb.bot.services.MessageServiceImpl.getAnswerGPTMessage(MessageServiceImpl.kt:89) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:108) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 20:41:57.554 ERROR 273741 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error onUpdateReceived Ошибка парсинга body от ChatGPT: closed
+
+java.lang.RuntimeException: Ошибка парсинга body от ChatGPT: closed
+	at ru.isb.bot.clients.ChatGPTClientImpl.getAnswerGPT(ChatGPTClientImpl.kt:64) ~[classes/:na]
+	at ru.isb.bot.services.MessageServiceImpl.getAnswerGPTMessage(MessageServiceImpl.kt:89) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:108) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 20:41:57.821 ERROR 273741 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 20:42:51.510  INFO 274793 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 274793 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:42:51.511  INFO 274793 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:42:51.905  INFO 274793 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 20:42:51.909  INFO 274793 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:42:51.910  INFO 274793 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:42:51.949  INFO 274793 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:42:51.949  INFO 274793 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 409 ms
+2024-01-04 20:42:52.560  INFO 274793 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 20:42:52.566  INFO 274793 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.206 seconds (JVM running for 1.395)
+2024-01-04 20:42:59.062  INFO 274793 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 20:42:59.064  INFO 274793 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 20:43:03.039  INFO 274793 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {
+    "id": "chatcmpl-wTuN6kiaSyxsklYp0aQJNEONLNdY",
+    "object": "chat.completion",
+    "created": 1704382983,
+    "model": "gpt-3.5-turbo-16k",
+    "provider": {
+        "name": "OnlineGpt",
+        "url": "https://onlinegpt.org"
+    },
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "\u041f\u0440\u0438\u0432\u0435\u0442! \u0421\u043f\u0430\u0441\u0438\u0431\u043e, \u0447\u0442\u043e \u0441\u043f\u0440\u043e\u0441\u0438\u043b! \u041a\u0430\u043a \u0410\u0418-\u0430\u0441\u0441\u0438\u0441\u0442\u0435\u043d\u0442, \u043c\u043e\u0438 \"\u0434\u0435\u043b\u0430\" \u0432\u0441\u0435\u0433\u0434\u0430 \u043e\u0442\u043b\u0438\u0447\u043d\u044b\u0435! \u042f \u0432\u0441\u0435\u0433\u0434\u0430 \u0433\u043e\u0442\u043e\u0432 \u043f\u043e\u043c\u043e\u0447\u044c \u0438 \u043e\u0442\u0432\u0435\u0442\u0438\u0442\u044c \u043d\u0430 \u043b\u044e\u0431\u044b\u0435 \u0432\u043e\u043f\u0440\u043e\u0441\u044b. \u041a\u0430\u043a \u044f \u043c\u043e\u0433\u0443 \u0431\u044b\u0442\u044c \u043f\u043e\u043b\u0435\u0437\u0435\u043d \u0441\u0435\u0433\u043e\u0434\u043d\u044f?"
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+    }
+}
+2024-01-04 20:43:03.040 ERROR 274793 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : closed
+
+java.lang.IllegalStateException: closed
+	at okio.RealBufferedSource.select(RealBufferedSource.kt:218) ~[okio-jvm-3.0.0.jar:na]
+	at okhttp3.internal.Util.readBomAsCharset(Util.kt:265) ~[okhttp-4.10.0.jar:na]
+	at okhttp3.ResponseBody.string(ResponseBody.kt:187) ~[okhttp-4.10.0.jar:na]
+	at ru.isb.bot.clients.ChatGPTClientImpl.getAnswerGPT(ChatGPTClientImpl.kt:56) ~[classes/:na]
+	at ru.isb.bot.services.MessageServiceImpl.getAnswerGPTMessage(MessageServiceImpl.kt:89) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:108) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 20:43:03.041 ERROR 274793 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error onUpdateReceived Ошибка парсинга body от ChatGPT: closed
+
+java.lang.RuntimeException: Ошибка парсинга body от ChatGPT: closed
+	at ru.isb.bot.clients.ChatGPTClientImpl.getAnswerGPT(ChatGPTClientImpl.kt:65) ~[classes/:na]
+	at ru.isb.bot.services.MessageServiceImpl.getAnswerGPTMessage(MessageServiceImpl.kt:89) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:108) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 20:43:03.265 ERROR 274793 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 20:43:57.676  INFO 275786 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 275786 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 20:43:57.677  INFO 275786 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 20:43:58.055  INFO 275786 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 20:43:58.060  INFO 275786 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 20:43:58.060  INFO 275786 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 20:43:58.100  INFO 275786 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 20:43:58.100  INFO 275786 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 398 ms
+2024-01-04 20:43:58.711  INFO 275786 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 20:43:58.717  INFO 275786 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.199 seconds (JVM running for 1.394)
+2024-01-04 20:44:02.244  INFO 275786 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 20:44:02.247  INFO 275786 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 20:44:06.777  INFO 275786 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {
+    "id": "chatcmpl-xqzjqMFNcNYOuL2yweA1vsFiVHOs",
+    "object": "chat.completion",
+    "created": 1704383046,
+    "model": "gpt-3.5-turbo-16k",
+    "provider": {
+        "name": "OnlineGpt",
+        "url": "https://onlinegpt.org"
+    },
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "\u041f\u0440\u0438\u0432\u0435\u0442! \u042f \u0432\u0441\u0435\u0433\u043e \u043b\u0438\u0448\u044c \u0432\u0438\u0440\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0439 \u043f\u043e\u043c\u043e\u0449\u043d\u0438\u043a, \u043d\u043e \u043c\u043e\u0438 \u0434\u0435\u043b\u0430 \u043e\u0442\u043b\u0438\u0447\u043d\u043e, \u043f\u043e\u0442\u043e\u043c\u0443 \u0447\u0442\u043e \u044f \u0433\u043e\u0442\u043e\u0432 \u043f\u043e\u043c\u043e\u0447\u044c \u0442\u0435\u0431\u0435! \u041a\u0430\u043a \u044f \u043c\u043e\u0433\u0443 \u0431\u044b\u0442\u044c \u043f\u043e\u043b\u0435\u0437\u043d\u044b\u043c \u0441\u0435\u0433\u043e\u0434\u043d\u044f?"
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+    }
+}
+2024-01-04 20:44:06.778 ERROR 275786 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error onUpdateReceived closed
+
+java.lang.IllegalStateException: closed
+	at okio.RealBufferedSource.select(RealBufferedSource.kt:218) ~[okio-jvm-3.0.0.jar:na]
+	at okhttp3.internal.Util.readBomAsCharset(Util.kt:265) ~[okhttp-4.10.0.jar:na]
+	at okhttp3.ResponseBody.string(ResponseBody.kt:187) ~[okhttp-4.10.0.jar:na]
+	at ru.isb.bot.clients.ChatGPTClientImpl.getAnswerGPT(ChatGPTClientImpl.kt:55) ~[classes/:na]
+	at ru.isb.bot.services.MessageServiceImpl.getAnswerGPTMessage(MessageServiceImpl.kt:89) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:108) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 20:44:06.972 ERROR 275786 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:00:59.033  INFO 289629 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 289629 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 21:00:59.034  INFO 289629 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 21:00:59.418  INFO 289629 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 21:00:59.423  INFO 289629 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 21:00:59.423  INFO 289629 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 21:00:59.464  INFO 289629 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 21:00:59.464  INFO 289629 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 405 ms
+2024-01-04 21:01:00.053  INFO 289629 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 21:01:00.058  INFO 289629 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.204 seconds (JVM running for 1.396)
+2024-01-04 21:01:04.201  INFO 289629 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 21:01:04.203  INFO 289629 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 21:01:04.210 ERROR 289629 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Text parameter can't be empty
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiValidationException: Text parameter can't be empty
+	at org.telegram.telegrambots.meta.api.methods.send.SendMessage.validate(SendMessage.java:138) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendMethodRequest(DefaultAbsSender.java:1140) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1114) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:145) ~[classes/:na]
+	at java.base/java.util.Collections$SingletonList.forEach(Collections.java:4966) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:143) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:107) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 21:01:04.495 ERROR 289629 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:08:07.327  INFO 295394 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 295394 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 21:08:07.328  INFO 295394 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 21:08:07.719  INFO 295394 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 21:08:07.723  INFO 295394 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 21:08:07.724  INFO 295394 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 21:08:07.764  INFO 295394 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 21:08:07.764  INFO 295394 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 413 ms
+2024-01-04 21:08:08.356  INFO 295394 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 21:08:08.362  INFO 295394 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.189 seconds (JVM running for 1.406)
+2024-01-04 21:08:11.687  INFO 295394 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 21:08:11.690  INFO 295394 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 21:08:17.439 ERROR 295394 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:08:32.044  INFO 295394 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 21:08:32.045  INFO 295394 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 21:08:39.007 ERROR 295394 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:14:30.671  INFO 300453 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 300453 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 21:14:30.672  INFO 300453 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 21:14:31.052  INFO 300453 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 21:14:31.057  INFO 300453 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 21:14:31.058  INFO 300453 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 21:14:31.098  INFO 300453 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 21:14:31.098  INFO 300453 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 392 ms
+2024-01-04 21:14:31.679  INFO 300453 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 21:14:31.685  INFO 300453 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.183 seconds (JVM running for 1.393)
+2024-01-04 21:14:33.428  INFO 300453 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : как дела?
+2024-01-04 21:14:33.430  INFO 300453 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как дела?"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 21:14:37.270 ERROR 300453 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:15:15.932  INFO 300453 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши код на 5 популярных языках
+2024-01-04 21:15:15.933  INFO 300453 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k","provider":""}
+2024-01-04 21:15:24.285 ERROR 300453 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:16:48.208  INFO 302388 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 302388 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 21:16:48.209  INFO 302388 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 21:16:48.584  INFO 302388 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 21:16:48.589  INFO 302388 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 21:16:48.589  INFO 302388 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 21:16:48.629  INFO 302388 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 21:16:48.629  INFO 302388 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 394 ms
+2024-01-04 21:16:49.230  INFO 302388 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 21:16:49.237  INFO 302388 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.187 seconds (JVM running for 1.379)
+2024-01-04 21:17:00.681  INFO 302388 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши код на 5 популярных языках
+2024-01-04 21:17:00.683  INFO 302388 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 21:17:10.207 ERROR 302388 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:17:13.787  INFO 302388 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши код на 5 популярных языках
+2024-01-04 21:17:13.787  INFO 302388 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 21:17:14.083  INFO 302388 --- [ForkJoinPool.commonPool-worker-2] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши код на 5 популярных языках
+2024-01-04 21:17:14.083  INFO 302388 --- [ForkJoinPool.commonPool-worker-2] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 21:17:14.494  INFO 302388 --- [ForkJoinPool.commonPool-worker-3] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши код на 5 популярных языках
+2024-01-04 21:17:14.494  INFO 302388 --- [ForkJoinPool.commonPool-worker-3] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 21:17:17.819 ERROR 302388 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:18:23.684  INFO 303806 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 303806 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 21:18:23.686  INFO 303806 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 21:18:24.091  INFO 303806 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 21:18:24.095  INFO 303806 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 21:18:24.096  INFO 303806 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 21:18:24.136  INFO 303806 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 21:18:24.137  INFO 303806 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 426 ms
+2024-01-04 21:18:24.745  INFO 303806 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 21:18:24.751  INFO 303806 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.233 seconds (JVM running for 1.434)
+2024-01-04 21:18:31.190  INFO 303806 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши код на 5 популярных языках
+2024-01-04 21:18:31.192  INFO 303806 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 21:18:40.890 ERROR 303806 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:19:02.252 ERROR 303806 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:20:26.518 ERROR 303806 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:20:47.339 ERROR 303806 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:22:15.389  INFO 307267 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 307267 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 21:22:15.390  INFO 307267 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 21:22:15.773  INFO 307267 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 21:22:15.778  INFO 307267 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 21:22:15.778  INFO 307267 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 21:22:15.818  INFO 307267 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 21:22:15.819  INFO 307267 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 405 ms
+2024-01-04 21:22:16.418  INFO 307267 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 21:22:16.425  INFO 307267 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.201 seconds (JVM running for 1.398)
+2024-01-04 21:22:21.441  INFO 307267 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши код на 5 популярных языках
+2024-01-04 21:22:21.443  INFO 307267 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 21:22:28.252 ERROR 307267 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Character '!' is reserved and must be escaped with the preceding '\'
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Character '!' is reserved and must be escaped with the preceding '\'
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:145) ~[classes/:na]
+	at java.base/java.util.Collections$SingletonList.forEach(Collections.java:4966) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:143) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:107) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 21:22:28.327 ERROR 307267 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error onUpdateReceived Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Character '.' is reserved and must be escaped with the preceding '\'
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Character '.' is reserved and must be escaped with the preceding '\'
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.sendMessageException(Bot.kt:168) ~[classes/:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:153) ~[classes/:na]
+	at java.base/java.util.Collections$SingletonList.forEach(Collections.java:4966) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:143) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:107) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 21:22:28.404 ERROR 307267 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:22:52.157  INFO 307922 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 307922 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 21:22:52.158  INFO 307922 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 21:22:52.574  INFO 307922 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 21:22:52.579  INFO 307922 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 21:22:52.579  INFO 307922 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 21:22:52.617  INFO 307922 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 21:22:52.617  INFO 307922 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 435 ms
+2024-01-04 21:22:53.277  INFO 307922 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 21:22:53.283  INFO 307922 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.306 seconds (JVM running for 1.519)
+2024-01-04 21:22:58.205  INFO 307922 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши объемный код на 5 популярных языках
+2024-01-04 21:22:58.208  INFO 307922 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши объемный код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 21:23:06.112 ERROR 307922 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:23:33.965  INFO 307922 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши очень  объемный код на 5 популярных языках
+2024-01-04 21:23:33.965  INFO 307922 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши очень  объемный код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 21:23:48.796 ERROR 307922 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 1773
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 1773
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:145) ~[classes/:na]
+	at java.base/java.util.Collections$SingletonList.forEach(Collections.java:4966) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:143) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:107) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 21:23:48.969 ERROR 307922 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:24:53.652  INFO 307922 --- [ForkJoinPool.commonPool-worker-2] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши очень  объемный код на 5 популярных языках
+2024-01-04 21:24:53.652  INFO 307922 --- [ForkJoinPool.commonPool-worker-2] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши очень  объемный код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 21:25:28.328 ERROR 307922 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:26:08.931  INFO 310746 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 310746 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 21:26:08.932  INFO 310746 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 21:26:09.345  INFO 310746 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 21:26:09.350  INFO 310746 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 21:26:09.350  INFO 310746 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 21:26:09.390  INFO 310746 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 21:26:09.390  INFO 310746 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 426 ms
+2024-01-04 21:26:09.976  INFO 310746 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 21:26:09.982  INFO 310746 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.214 seconds (JVM running for 1.407)
+2024-01-04 21:26:13.134  INFO 310746 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши очень  объемный код на 5 популярных языках
+2024-01-04 21:26:13.137  INFO 310746 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши очень  объемный код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 21:26:41.972 ERROR 310746 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:26:56.319  INFO 310746 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши очень  объемный код на 10 популярных языках
+2024-01-04 21:26:56.319  INFO 310746 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши очень  объемный код на 10 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 21:28:09.316  INFO 310746 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executeMessages Конечно, вот примеры объемного кода на 10 популярных языках программирования:
+
+1. Python:
+```python
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    else:
+        fib_seq = [0, 1]
+        while len(fib_seq) < n:
+            fib_seq.append(fib_seq[-1] + fib_seq[-2])
+        return fib_seq
+```
+
+2. Java:
+```java
+public class Fibonacci {
+    public static int[] fibonacci(int n) {
+        if (n <= 0) {
+            return new int[0];
+        } else if (n == 1) {
+            return new int[]{0};
+        } else if (n == 2) {
+            return new int[]{0, 1};
+        } else {
+            int[] fibSeq = new int[n];
+            fibSeq[0] = 0;
+            fibSeq[1] = 1;
+            for (int i = 2; i < n; i++) {
+                fibSeq[i] = fibSeq[i-1] + fibSeq[i-2];
+            }
+            return fibSeq;
+        }
+    }
+}
+```
+
+3. JavaScript:
+```javascript
+function fibonacci(n) {
+    if (n <= 0) {
+        return [];
+    } else if (n === 1) {
+        return [0];
+    } else if (n === 2) {
+        return [0, 1];
+    } else {
+        let fibSeq = [0, 1];
+        while (fibSeq.length < n) {
+            fibSeq.push(fibSeq[fibSeq.length - 1] + fibSeq[fibSeq.length - 2]);
+        }
+        return fibSeq;
+    }
+}
+```
+
+4. C++:
+```cpp
+#include <iostream>
+#include <vector>
+
+std::vector<int> fibonacci(int n) {
+    if (n <= 0) {
+        return std::vector<int>();
+    } else if (n == 1) {
+        return std::vector<int>{0};
+    } else if (n == 2) {
+        return std::vector<int>{0, 1};
+    } else {
+        std::vector<int> fibSeq(n);
+        fibSeq[0] = 0;
+        fibSeq[1] = 1;
+        for (int i = 2; i < n; i++) {
+            fibSeq[i] = fibSeq[i-1] + fibSeq[i-2];
+        }
+        return fibSeq;
+    }
+}
+
+int main() {
+    int n = 10;
+    std::vector<int> seq = fibonacci(n);
+    for (int num : seq) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+    return 0;
+}
+```
+
+5. C#:
+```csharp
+using System;
+using System.Collections.Generic;
+
+class Fibonacci {
+    static List<int> FibonacciSequence(int n) {
+        if (n <= 0) {
+            return new List<int>();
+        } else if (n == 1) {
+            return new List<int> {0};
+        } else if (n == 2) {
+            return new List<int> {0, 1};
+        } else {
+            List<int> fibSeq = new List<int> {0, 1};
+            while (fibSeq.Count < n) {
+                fibSeq.Add(fibSeq[fibSeq.Count - 1] + fibSeq[fibSeq.Count - 2]);
+            }
+            return fibSeq;
+        }
+    }
+
+    static void Main() {
+        int n = 10;
+        List<int> seq = FibonacciSequence(n);
+        foreach (int num in seq) {
+            Console.Write(num + " ");
+        }
+        Console.WriteLine();
+    }
+}
+```
+
+6. Ruby:
+```ruby
+def fibonacci(n)
+    return [] if n <= 0
+    return [0] if n == 1
+    return [0, 1] if n == 2
+    
+    fib_seq = [0, 1]
+    while fib_seq.length < n
+        fib_seq << fib_seq[-1] + fib_seq[-2]
+    end
+    
+    return fib_seq
+end
+
+n = 10
+seq = fibonacci(n)
+puts seq.join(' ')
+```
+
+7. PHP:
+```php
+function fibonacci($n) {
+    if ($n <= 0) {
+        return [];
+    } else if ($n == 1) {
+        return [0];
+    } else if ($n == 2) {
+        return [0, 1];
+    } else {
+        $fibSeq = [0, 1];
+        while (count($fibSeq) < $n) {
+            $fibSeq[] = $fibSeq[count($fibSeq) - 1] + $fibSeq[count($fibSeq) - 2];
+        }
+        return $fibSeq;
+    }
+}
+
+$n = 10;
+$seq = fibonacci($n);
+echo implode(' ', $seq);
+```
+
+8. Swift:
+```swift
+func fibonacci(_ n: Int) -> [Int] {
+    guard n > 0 else { return [] }
+    guard n != 1 else { return [0] }
+    guard n != 2 else { return [0, 1] }
+    
+    var fibSeq = [0, 1]
+    while fibSeq.count < n {
+        fibSeq.append(fibSeq[fibSeq.count - 1] + fibSeq[fibSeq.count - 2])
+    }
+    
+    return fibSeq
+}
+
+let n = 10
+let seq = fibonacci(n)
+print(seq.map { String($0) }.joined(separator: " "))
+```
+
+9. Go:
+```go
+package main
+
+import "fmt"
+
+func fibonacci(n int) []int {
+    if n <= 0 {
+        return []int{}
+    } else if n == 1 {
+        return []int{0}
+    } else
+2024-01-04 21:28:09.318 ERROR 310746 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 3999
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 3999
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:145) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:143) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:107) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 21:28:09.602  INFO 310746 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executeMessages if n == 2 {
+        return []int{0, 1}
+    } else {
+        fibSeq := []int{0, 1}
+        for len(fibSeq) < n {
+            fibSeq = append(fibSeq, fibSeq[len(fibSeq)-1]+fibSeq[len(fibSeq)-2])
+        }
+        return fibSeq
+    }
+}
+
+func main() {
+    n := 10
+    seq := fibonacci(n)
+    fmt.Println(seq)
+}
+```
+
+10. Kotlin:
+```kotlin
+fun fibonacci(n: Int): List<Int> {
+    if (n <= 0) {
+        return emptyList()
+    } else if (n == 1) {
+        return listOf(0)
+    } else if (n == 2) {
+        return listOf(0, 1)
+    } else {
+        val fibSeq = mutableListOf(0, 1)
+        while (fibSeq.size < n) {
+            fibSeq.add(fibSeq[fibSeq.size - 1] + fibSeq[fibSeq.size - 2])
+        }
+        return fibSeq
+    }
+}
+
+fun main() {
+    val n = 10
+    val seq = fibonacci(n)
+    println(seq.joinToString(" "))
+}
+```
+
+Это лишь небольшие примеры, но код на каждом из этих языков может быть гораздо более объемным и сложным в зависимости от требуемой функциональности и задачи, которую нужно решить.
+2024-01-04 21:28:09.603 ERROR 310746 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 812
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 812
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:145) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:143) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:107) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 21:28:09.787 ERROR 310746 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:32:06.553  INFO 310746 --- [ForkJoinPool.commonPool-worker-2] ru.isb.bot.clients.ChatGPTClientImpl     : как найти не закрывающиеся символы ``` в строке в Kotlin, и добавить в конец списка
+2024-01-04 21:32:06.553  INFO 310746 --- [ForkJoinPool.commonPool-worker-2] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"как найти не закрывающиеся символы ``` в строке в Kotlin, и добавить в конец списка"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 21:32:13.901 ERROR 310746 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 21:59:33.052  INFO 338277 --- [main] ru.isb.bot.AppKt                         : Starting AppKt using Java 17.0.9 on fedora with PID 338277 (/home/kuzaevrr/IdeaProjects/isb-bot/target/classes started by kuzaevrr in /home/kuzaevrr/IdeaProjects/isb-bot)
+2024-01-04 21:59:33.054  INFO 338277 --- [main] ru.isb.bot.AppKt                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-04 21:59:33.408  INFO 338277 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-01-04 21:59:33.413  INFO 338277 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04 21:59:33.413  INFO 338277 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-01-04 21:59:33.453  INFO 338277 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04 21:59:33.453  INFO 338277 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 374 ms
+2024-01-04 21:59:34.028  INFO 338277 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-01-04 21:59:34.034  INFO 338277 --- [main] ru.isb.bot.AppKt                         : Started AppKt in 1.152 seconds (JVM running for 1.353)
+2024-01-04 21:59:44.542  INFO 338277 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши очень  объемный код на 5 популярных языках
+2024-01-04 21:59:44.544  INFO 338277 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши очень  объемный код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 22:01:34.453  INFO 338277 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Info executeMessages: ```, ``````
+2024-01-04 22:01:34.456 ERROR 338277 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 8
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 8
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:145) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:143) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:107) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 22:01:34.785  INFO 338277 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Info executeMessages: ``````
+2024-01-04 22:01:34.786 ERROR 338277 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.Bot                           : Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: message must be non-empty
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.send.SendMessage query: [400] Bad Request: message must be non-empty
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponse(PartialBotApiMethod.java:34) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:20) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage.deserializeResponse(BotApiMethodMessage.java:15) ~[telegrambots-meta-6.8.0.jar:na]
+	at org.telegram.telegrambots.bots.DefaultAbsSender.sendApiMethod(DefaultAbsSender.java:1115) ~[telegrambots-6.8.0.jar:na]
+	at org.telegram.telegrambots.meta.bots.AbsSender.execute(AbsSender.java:64) ~[telegrambots-meta-6.8.0.jar:na]
+	at ru.isb.bot.Bot.executeMessages$lambda$2(Bot.kt:145) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at ru.isb.bot.Bot.executeMessages(Bot.kt:143) ~[classes/:na]
+	at ru.isb.bot.Bot.handlerMessageText(Bot.kt:107) ~[classes/:na]
+	at ru.isb.bot.Bot.switchMessage(Bot.kt:80) ~[classes/:na]
+	at ru.isb.bot.Bot.asyncOnUpdateReceived(Bot.kt:67) ~[classes/:na]
+	at ru.isb.bot.Bot.onUpdateReceived$lambda$1$lambda$0(Bot.kt:54) ~[classes/:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRun.tryFire(CompletableFuture.java:787) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[na:na]
+
+2024-01-04 22:01:34.894 ERROR 338277 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 22:02:25.531  INFO 338277 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши  объемный код на 5 популярных языках
+2024-01-04 22:02:25.532  INFO 338277 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши  объемный код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 22:02:53.669 ERROR 338277 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
+2024-01-04 22:03:11.015  INFO 338277 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : Напиши  объемный код на 5 популярных языках
+2024-01-04 22:03:11.015  INFO 338277 --- [ForkJoinPool.commonPool-worker-1] ru.isb.bot.clients.ChatGPTClientImpl     : {"messages":[{"role":"user","content":"Напиши  объемный код на 5 популярных языках"}],"model":"gpt-3.5-turbo-16k-0613"}
+2024-01-04 22:03:30.368 ERROR 338277 --- [DefaultDispatcher-worker-1] ru.isb.bot.Bot                           : Typing message error: StandaloneCoroutine was cancelled
+
+kotlinx.coroutines.JobCancellationException: StandaloneCoroutine was cancelled
+
