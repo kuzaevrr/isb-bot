@@ -1,5 +1,6 @@
 package ru.isb.bot.clients
 
+import com.google.gson.Gson
 import lombok.SneakyThrows
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
@@ -45,7 +46,7 @@ class ChatGPTClient : Logging {
         response.use { it ->
             if (it.isSuccessful) {
                 it.body?.use { responseBody ->
-                    val dto = JsonUtils.parseStringJsonToObject(responseBody.string(), ChatGPTReceiptDTO::class.java)
+                    val dto = Gson().fromJson(responseBody.string(), ChatGPTReceiptDTO::class.java)
                     return dto.choices?.let { it[0].message?.content }
                         ?: "ChatGPT отправил не известный объект. ${responseBody.string()}"
                 }
