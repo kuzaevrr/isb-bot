@@ -11,7 +11,8 @@ class MessageUtils : Logging {
 
     companion object {
 
-        private val regex = setOf(Regex("```"), Regex("\\*\\*\\*"), Regex("___"), Regex("~~~"), Regex("\\|\\|\\|"))
+        private val regex =
+            setOf("\\_", "\\*", "[", "]", "(", ")", "~", "`", ">", "#", "\\+", "-", "=", "\\|", "{", "}", "\\.", "\\!")
 
         fun formatMessage(scheduleDTOs: List<ScheduleDTO>?): String {
             var message = "***Расписание занятий!***\n"
@@ -88,7 +89,8 @@ class MessageUtils : Logging {
         }
 
         private fun addEndString4090(input: String): String {
-            regex.forEach { regex ->
+            regex.forEach { regexText ->
+                var regex = Regex(regexText)
                 if (unclosedSymbols(input, regex)) {
                     return "${input}${regex.pattern}"
                 }
@@ -97,7 +99,8 @@ class MessageUtils : Logging {
         }
 
         private fun addStartString4090(input: String): String {
-            regex.forEach { regex ->
+            regex.forEach { regexText ->
+                var regex = Regex(regexText)
                 if (unclosedSymbols(input, regex)) {
                     return "${regex.pattern}${input}"
                 }
