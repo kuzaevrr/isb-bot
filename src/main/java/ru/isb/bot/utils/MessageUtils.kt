@@ -90,7 +90,7 @@ class MessageUtils : Logging {
 
         private fun addEndString4090(input: String): String {
             regex.forEach { regexText ->
-                var regex = Regex(regexText)
+                val regex = Regex(regexText)
                 if (unclosedSymbols(input, regex)) {
                     return "${input}${regex.pattern}"
                 }
@@ -100,7 +100,7 @@ class MessageUtils : Logging {
 
         private fun addStartString4090(input: String): String {
             regex.forEach { regexText ->
-                var regex = Regex(regexText)
+                val regex = Regex(regexText)
                 if (unclosedSymbols(input, regex)) {
                     return "${regex.pattern}${input}"
                 }

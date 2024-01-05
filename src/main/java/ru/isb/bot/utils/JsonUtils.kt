@@ -14,12 +14,12 @@ class JsonUtils {
         }
 
         @SneakyThrows
-        fun <T> parseStringJsonToObject(content: String?, clazz: Class<T>?): T? {
+        fun <T> parseStringJsonToObject(content: String, clazz: Class<T>): T {
             return mapper.readValue(content, clazz)
         }
 
         @SneakyThrows
-        fun parseObjectToString(`object`: Any?): String {
+        fun parseObjectToString(`object`: Any): String {
             return mapper.writeValueAsString(`object`)
         }
     }
