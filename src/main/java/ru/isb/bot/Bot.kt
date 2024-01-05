@@ -136,8 +136,9 @@ class Bot(
     }
 
     private fun executeMessages(message: String, chatId: Long) {
-        textSplitter(message).forEach(Consumer<String> { message4096: String ->
+        textSplitter(message).forEach(Consumer { message4096: String ->
             try {
+                logger.info(message4096)
                 execute(
                     sendMessage(
                         message4096,

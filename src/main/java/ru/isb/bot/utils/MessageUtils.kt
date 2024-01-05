@@ -105,9 +105,9 @@ class MessageUtils : Logging {
             return input;
         }
 
-        private fun unclosedSymbols(input: String, regex: Regex) : Boolean =
+        private fun unclosedSymbols(input: String, regex: Regex): Boolean =
             regex.findAll(input)
-                .any{ matchResult -> matchResult.range.last % 2 != 0 }
+                .count() % 2 != 0
 
     }
 
