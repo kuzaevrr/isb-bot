@@ -14,6 +14,9 @@ class MessageUtils : Logging {
         private val regex =
             setOf("\\_", "\\*", "[", "]", "(", ")", "~", "`", ">", "#", "\\+", "-", "=", "\\|", "{", "}", "\\.", "\\!")
 
+        private val originalSet =
+            setOf("_", "*", "+", "|", ".", "!")
+
         fun formatMessage(scheduleDTOs: List<ScheduleDTO>?): String {
             var message = "***Расписание занятий!***\n"
             val mapSchedules = parseDTO(scheduleDTOs)
@@ -112,6 +115,12 @@ class MessageUtils : Logging {
             regex.findAll(input)
                 .count() % 2 != 0
 
+        fun concatInputMessage(message: String): String {
+            originalSet.forEach { regexText ->
+                message.replace(regexText, "\\" + regexText)
+            }
+            return message;
+        }
     }
 
 }

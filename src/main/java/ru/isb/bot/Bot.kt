@@ -14,6 +14,7 @@ import org.telegram.telegrambots.meta.api.objects.Update
 import ru.isb.bot.enums.Commands
 import ru.isb.bot.enums.Commands.Companion.fromString
 import ru.isb.bot.services.MessageService
+import ru.isb.bot.utils.MessageUtils
 import ru.isb.bot.utils.MessageUtils.Companion.textSplitter
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.Executors
@@ -100,7 +101,7 @@ class Bot(
         }
         if (update.message.text.contains(MessageService.MESSAGE_GPT_SPLIT)) {
             executeMessages(
-                messageService.getAnswerGPTMessage(update.message.text),
+                messageService.getAnswerGPTMessage(MessageUtils.concatInputMessage(update.message.text)),
                 update.message.chatId
             )
         }
