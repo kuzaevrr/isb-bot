@@ -74,11 +74,11 @@ class MessageService (
     }
 
     fun getListGroup(): String {
-        list.sorted();
+        val newList = list.sorted();
         return "***Список группы: ***\n" +
-                IntStream.range(0, list.size)
+                IntStream.range(0, newList.size)
                     .mapToObj { i: Int ->
-                        (i + 1).toString() + ") " + list[i] + "\n"
+                        (i + 1).toString() + ") " + newList[i] + "\n"
                     }.collect(Collectors.joining());
     }
 
