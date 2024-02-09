@@ -93,7 +93,7 @@ class Bot(
             )
 
             Commands.ALL, Commands.ALL_GROUP, Commands.ALL_LINK -> executeMessages(
-                "@elektrik\\_gut @markin\\_ka @RA\\_prof @Mr\\_Ket1997 @Yureskii @V0xP0puli @vladka\\_teb @polibuu @Desert567",
+                "@kuzya\\_ram @markin\\_ka @RA\\_prof @Mr\\_Ket1997 @Yureskii @V0xP0puli @vladka\\_teb @polibuu @Desert567",
                 update.message.chatId
             )
 
