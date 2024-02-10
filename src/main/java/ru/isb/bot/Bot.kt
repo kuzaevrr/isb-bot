@@ -8,16 +8,10 @@ import org.springframework.stereotype.Component
 import org.telegram.telegrambots.bots.TelegramLongPollingBot
 import org.telegram.telegrambots.meta.api.methods.GetFile
 import org.telegram.telegrambots.meta.api.methods.ParseMode
-import org.telegram.telegrambots.meta.api.methods.boosts.GetUserChatBoosts
-import org.telegram.telegrambots.meta.api.methods.groupadministration.GetChat
-import org.telegram.telegrambots.meta.api.methods.groupadministration.GetChatMember
-import org.telegram.telegrambots.meta.api.methods.groupadministration.GetChatMember.GetChatMemberBuilder
 import org.telegram.telegrambots.meta.api.methods.send.SendChatAction
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage
 import org.telegram.telegrambots.meta.api.objects.Update
-import org.telegram.telegrambots.meta.api.objects.chatmember.*
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException
 import ru.isb.bot.enums.Commands
 import ru.isb.bot.enums.Commands.Companion.fromString
 import ru.isb.bot.services.MessageService
@@ -94,9 +88,6 @@ class Bot(
                     messageService.getSchedulesWeek(),
                     update
                 )
-                execute(
-                    DeleteMessage(update.message.chatId.toString(), update.message.messageId)
-                )
             }
 
             Commands.LIST_GROUP, Commands.LIST -> {
@@ -105,9 +96,6 @@ class Bot(
                     messageService.getListGroup(),
                     update
                 )
-                execute(
-                    DeleteMessage(update.message.chatId.toString(), update.message.messageId)
-                )
             }
 
             Commands.ALL, Commands.ALL_GROUP, Commands.ALL_LINK -> {
@@ -115,9 +103,6 @@ class Bot(
                 executeMessages(
                 "@kuzya\\_ram @markin\\_ka @RA\\_prof @Mr\\_Ket1997 @Yureskii @V0xP0puli @vladka\\_teb @polibuu @Desert567",
                     update
-                )
-                execute(
-                    DeleteMessage(update.message.chatId.toString(), update.message.messageId)
                 )
             }
 
