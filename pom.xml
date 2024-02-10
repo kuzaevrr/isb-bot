@@ -17,7 +17,7 @@
     <properties>
         <java.version>17</java.version>
         <jackson.version>2.14.1</jackson.version>
-        <telegram.bot.version>6.8.0</telegram.bot.version>
+        <telegram.bot.version>6.9.7.0</telegram.bot.version>
         <kotlin.version>1.9.21</kotlin.version>
     </properties>
     <dependencies>

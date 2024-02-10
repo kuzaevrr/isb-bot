@@ -5,6 +5,11 @@ import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
 import org.apache.logging.log4j.kotlin.Logging
 import org.springframework.stereotype.Service
+import org.telegram.telegrambots.meta.api.methods.groupadministration.GetChatMember
+import org.telegram.telegrambots.meta.api.objects.User
+import org.telegram.telegrambots.meta.api.objects.chatmember.*
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException
+import org.telegram.telegrambots.meta.api.methods.groupadministration.GetChatMemberCount
 import ru.isb.bot.clients.ChatGPTClient
 import ru.isb.bot.clients.NextcloudClient
 import ru.isb.bot.clients.StudyScheduleClient
@@ -15,6 +20,7 @@ import java.io.IOException
 import java.time.LocalDate
 import java.util.stream.Collectors
 import java.util.stream.IntStream
+
 
 @Service
 class MessageService (

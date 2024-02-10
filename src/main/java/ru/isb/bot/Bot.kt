@@ -8,9 +8,16 @@ import org.springframework.stereotype.Component
 import org.telegram.telegrambots.bots.TelegramLongPollingBot
 import org.telegram.telegrambots.meta.api.methods.GetFile
 import org.telegram.telegrambots.meta.api.methods.ParseMode
+import org.telegram.telegrambots.meta.api.methods.boosts.GetUserChatBoosts
+import org.telegram.telegrambots.meta.api.methods.groupadministration.GetChat
+import org.telegram.telegrambots.meta.api.methods.groupadministration.GetChatMember
+import org.telegram.telegrambots.meta.api.methods.groupadministration.GetChatMember.GetChatMemberBuilder
 import org.telegram.telegrambots.meta.api.methods.send.SendChatAction
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage
 import org.telegram.telegrambots.meta.api.objects.Update
+import org.telegram.telegrambots.meta.api.objects.chatmember.*
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException
 import ru.isb.bot.enums.Commands
 import ru.isb.bot.enums.Commands.Companion.fromString
 import ru.isb.bot.services.MessageService
@@ -59,7 +66,6 @@ class Bot(
     private fun asyncOnUpdateReceived(update: Update) {
         try {
             if (update.hasMessage()) {
-                job = GlobalScope.launch { typing(update.message.chatId) }
                 switchMessage(update)
             }
         } catch (e: Exception) {
@@ -82,27 +88,46 @@ class Bot(
     @SneakyThrows
     private fun handlerMessageText(update: Update) {
         when (fromString(update.message.text)) {
-            Commands.SCHEDULE_GROUP, Commands.SCHEDULE -> executeMessages(
-                messageService.getSchedulesWeek(),
-                update.message.chatId
-            )
+            Commands.SCHEDULE_GROUP, Commands.SCHEDULE -> {
+                job = GlobalScope.launch { typing(update.message.chatId) }
+                executeMessages(
+                    messageService.getSchedulesWeek(),
+                    update
+                )
+                execute(
+                    DeleteMessage(update.message.chatId.toString(), update.message.messageId)
+                )
+            }
 
-            Commands.LIST_GROUP, Commands.LIST -> executeMessages(
-                messageService.getListGroup(),
-                update.message.chatId
-            )
+            Commands.LIST_GROUP, Commands.LIST -> {
+                job = GlobalScope.launch { typing(update.message.chatId) }
+                executeMessages(
+                    messageService.getListGroup(),
+                    update
+                )
+                execute(
+                    DeleteMessage(update.message.chatId.toString(), update.message.messageId)
+                )
+            }
 
-            Commands.ALL, Commands.ALL_GROUP, Commands.ALL_LINK -> executeMessages(
+            Commands.ALL, Commands.ALL_GROUP, Commands.ALL_LINK -> {
+                job = GlobalScope.launch { typing(update.message.chatId) }
+                executeMessages(
                 "@kuzya\\_ram @markin\\_ka @RA\\_prof @Mr\\_Ket1997 @Yureskii @V0xP0puli @vladka\\_teb @polibuu @Desert567",
-                update.message.chatId
-            )
+                    update
+                )
+                execute(
+                    DeleteMessage(update.message.chatId.toString(), update.message.messageId)
+                )
+            }
 
             else -> {}
         }
         if (update.message.text.contains(MessageService.MESSAGE_GPT_SPLIT)) {
+            job = GlobalScope.launch { typing(update.message.chatId) }
             executeMessages(
                 messageService.getAnswerGPTMessage(MessageUtils.concatInputMessage(update.message.text)),
-                update.message.chatId
+                update
             )
         }
     }
@@ -135,20 +160,20 @@ class Bot(
         }
     }
 
-    private fun executeMessages(message: String, chatId: Long) {
+    private fun executeMessages(message: String, update: Update) {
         textSplitter(message).forEach(Consumer { message4096: String ->
             try {
                 logger.info(message4096)
                 execute(
                     sendMessage(
                         message4096,
-                        chatId
+                        update.message.chatId
                     )
                 )
             } catch (e: Exception) {
                 logger.info("Info executeMessages: $message4096")
                 logger.error(e.message ?: "Error executeMessages", e)
-                sendMessageException(e, chatId)
+                sendMessageException(e, update.message.chatId)
             }
         })
     }

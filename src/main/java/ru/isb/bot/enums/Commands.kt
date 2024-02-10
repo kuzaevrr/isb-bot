@@ -15,6 +15,8 @@ enum class Commands(
     ALL_LINK("@all"),
     ALL("/all"),
     ALL_GROUP("/all@ISBNotPiBot"),
+
+    HELP("/help"),
     NO_COMMAND("");
 
     override fun toString(): String = command
