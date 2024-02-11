@@ -6,6 +6,7 @@ import org.apache.logging.log4j.kotlin.Logging
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.telegram.telegrambots.bots.TelegramLongPollingBot
+import org.telegram.telegrambots.meta.api.methods.AnswerCallbackQuery
 import org.telegram.telegrambots.meta.api.methods.GetFile
 import org.telegram.telegrambots.meta.api.methods.ParseMode
 import org.telegram.telegrambots.meta.api.methods.send.SendChatAction
@@ -36,6 +37,8 @@ class Bot(
 
     @Value("\${bot.isb.chat.id}")
     private val ISB_CHAT_ID: String = ""
+
+    private var gptEnableMap = HashMap<Long, Boolean>();
 
     override fun getBotUsername(): String = botUsername
     override fun getBotToken(): String = botToken
@@ -82,6 +85,7 @@ class Bot(
     @SneakyThrows
     private fun handlerMessageText(update: Update) {
         when (fromString(update.message.text)) {
+
             Commands.SCHEDULE_GROUP, Commands.SCHEDULE -> {
                 job = GlobalScope.launch { typing(update.message.chatId) }
                 executeMessages(
@@ -106,14 +110,38 @@ class Bot(
                 )
             }
 
-            else -> {}
-        }
-        if (update.message.text.contains(MessageService.MESSAGE_GPT_SPLIT)) {
-            job = GlobalScope.launch { typing(update.message.chatId) }
-            executeMessages(
-                messageService.getAnswerGPTMessage(MessageUtils.concatInputMessage(update.message.text)),
-                update
-            )
+            Commands.HELP -> {
+                job = GlobalScope.launch { typing(update.message.chatId) }
+                executeMessages(
+                    """
+                        /schedule - Расписание занятий
+                        /list - Список группы
+                        /all - Вызвать всех участников группы
+                        /help - Пояснение команд
+                        /gpt - Команда включения режима GPT
+                    """.trimIndent(),
+                    update
+                )
+            }
+
+            Commands.GPT -> {
+                executeMessages(
+                    """
+                        ${if (switchingGptMode(update)) "Включен GPT режим. Бот будет" else "Отключен GPT режим. Бот не будет"} отвечать на все сообщения.
+                    """.trimIndent(),
+                    update
+                )
+            }
+
+            else -> {
+              if (gptEnableMap[update.message.chatId] == true) {
+                    job = GlobalScope.launch { typing(update.message.chatId) }
+                    executeMessages(
+                        messageService.getAnswerGPTMessage(MessageUtils.concatInputMessage(update.message.text)),
+                        update
+                    )
+              } else {}
+            }
         }
     }
 
@@ -148,7 +176,6 @@ class Bot(
     private fun executeMessages(message: String, update: Update) {
         textSplitter(message).forEach(Consumer { message4096: String ->
             try {
-                logger.info(message4096)
                 execute(
                     sendMessage(
                         message4096,
@@ -176,6 +203,14 @@ class Bot(
         execute(
             sendMessage(e.toString(), chatId)
         )
+    }
+
+    private fun switchingGptMode(update: Update) : Boolean {
+        val chatId = update.message.chatId;
+        val enableGpt = gptEnableMap[chatId]?:false;
+
+        gptEnableMap.put(chatId, !enableGpt)
+        return !enableGpt
     }
 
 }

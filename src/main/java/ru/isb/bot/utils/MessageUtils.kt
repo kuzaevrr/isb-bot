@@ -1,7 +1,6 @@
 package ru.isb.bot.utils
 
 import org.apache.logging.log4j.kotlin.Logging
-import org.apache.logging.log4j.kotlin.logger
 import ru.isb.bot.dto.ScheduleDTO
 import java.util.*
 import java.util.function.Consumer

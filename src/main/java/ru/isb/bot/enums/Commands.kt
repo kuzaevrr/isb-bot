@@ -12,11 +12,17 @@ enum class Commands(
 
     LIST("/list"),
     LIST_GROUP("/list@ISBNotPiBot"),
+
     ALL_LINK("@all"),
     ALL("/all"),
     ALL_GROUP("/all@ISBNotPiBot"),
 
+    GPT("/gpt"),
+    GPT_GROUP("/gpt@ISBNotPiBot"),
+
     HELP("/help"),
+    HELP_GROUP("/help@ISBNotPiBot"),
+
     NO_COMMAND("");
 
     override fun toString(): String = command

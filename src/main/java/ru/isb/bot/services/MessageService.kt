@@ -88,9 +88,9 @@ class MessageService (
                     }.collect(Collectors.joining());
     }
 
-    fun getAnswerGPTMessage(text: String): String {
+    fun getAnswerGPTMessage(message: String): String {
         return gptClient.getAnswerGPT(
-                text.split(MESSAGE_GPT_SPLIT)[1]
+                message
             )
     }
 
