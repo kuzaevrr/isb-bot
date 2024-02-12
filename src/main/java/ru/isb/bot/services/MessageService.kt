@@ -35,7 +35,7 @@ class MessageService (
 
     private val list: List<String> = mutableListOf(
         "Андреев Р.Н.",
-        "Буркова П.В.",
+        "Салимова П.В.",
         "Кетов А.А.",
         "Колышкин Ю.А.",
         "Кузаев Р.Р.",
