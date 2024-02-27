@@ -48,7 +48,7 @@ class MessageService (
     @Throws(IOException::class, InterruptedException::class)
     fun getSchedulesWeek(): String {
         val date = LocalDate.now()
-        val endDate = LocalDate.now().plusDays(10)
+        val endDate = LocalDate.now().plusDays(31)
         val response = studyScheduleClient.getTimetableOfClasses(date, endDate)
         if (response.isSuccessful) {
             val gson = GsonBuilder()
