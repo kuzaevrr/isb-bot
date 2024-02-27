@@ -26,7 +26,7 @@ class MessageUtils : Logging {
                         message += ("***${DateUtils.calcTimeDiscipline(value.daytime_name)}***\n" +
                                 "***${value.cabinet_fullnumber_wotype}*** " +
                                 "${value.discipline_name} " +
-                                "${value.teacher_fio?.let { "(${it}) " }}" +
+                                value.teacher_fio?.let { "(${it}) " }.orEmpty() +
                                 "(${(if (value.notes?.let { it != "." } == true) value.notes + "!" else value.classtype_short)})\n")
                     })
                     message += "\n"
