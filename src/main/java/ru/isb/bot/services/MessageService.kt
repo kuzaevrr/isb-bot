@@ -80,11 +80,19 @@ class MessageService(
     }
 
     fun getListGroup(): String {
-        val newList = list.entries.map { entry -> entry.key + if (entry.value) " - Сдает ГОСы" else " - След год" }.sorted()
+        val gosTrue = list.entries.filter { entry -> entry.value }.map { entry -> entry.key }.sorted()
+        val gosFalse = list.entries.filter { entry -> !entry.value }.map { entry -> entry.key }.sorted()
+
         return "***Список группы: ***\n" +
-                IntStream.range(0, newList.size)
+                "***Сдают ГОСы ***\n" +
+                IntStream.range(0, gosTrue.size)
                         .mapToObj { i: Int ->
-                            (i + 1).toString() + ") " + newList[i] + "\n"
+                            (i + 1).toString() + ") " + gosTrue[i] + "\n"
+                        }.collect(Collectors.joining()) +
+                "***След год ***\n" +
+                IntStream.range(0, gosFalse.size)
+                        .mapToObj { i: Int ->
+                            (i + 1).toString() + ") " + gosFalse[i] + "\n"
                         }.collect(Collectors.joining());
     }
 
