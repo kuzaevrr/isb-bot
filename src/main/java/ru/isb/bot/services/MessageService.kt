@@ -83,8 +83,7 @@ class MessageService(
         val gosTrue = list.entries.filter { entry -> entry.value }.map { entry -> entry.key }.sorted()
         val gosFalse = list.entries.filter { entry -> !entry.value }.map { entry -> entry.key }.sorted()
 
-        return "***Список группы: ***\n" +
-                "***Хуй в жопе у:***\n" +
+        return "***03.06.24 в 9-00 ебут по списку:***\n" +
                 IntStream.range(0, gosTrue.size)
                         .mapToObj { i: Int ->
                             (i + 1).toString() + ") " + gosTrue[i] + "\n"
