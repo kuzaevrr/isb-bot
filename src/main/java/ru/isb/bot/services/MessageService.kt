@@ -84,16 +84,16 @@ class MessageService(
         val gosFalse = list.entries.filter { entry -> !entry.value }.map { entry -> entry.key }.sorted()
 
         return "***Список группы: ***\n" +
-                "***Сдают ГОСы ***\n" +
+                "***Вазелинят булки!***\n" +
                 IntStream.range(0, gosTrue.size)
                         .mapToObj { i: Int ->
                             (i + 1).toString() + ") " + gosTrue[i] + "\n"
                         }.collect(Collectors.joining()) +
-                "***След год ***\n" +
+                "***Скипают год!***\n" +
                 IntStream.range(0, gosFalse.size)
                         .mapToObj { i: Int ->
                             (i + 1).toString() + ") " + gosFalse[i] + "\n"
-                        }.collect(Collectors.joining());
+                        }.collect(Collectors.joining())
     }
 
     fun getAnswerGPTMessage(message: String): String {
