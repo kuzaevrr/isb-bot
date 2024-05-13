@@ -23,26 +23,26 @@ import java.util.stream.IntStream
 
 
 @Service
-class MessageService (
-    private val studyScheduleClient: StudyScheduleClient,
-    private val gptClient: ChatGPTClient,
-    private val nextcloudClient: NextcloudClient
+class MessageService(
+        private val studyScheduleClient: StudyScheduleClient,
+        private val gptClient: ChatGPTClient,
+        private val nextcloudClient: NextcloudClient
 ) : Logging {
 
     companion object {
         val MESSAGE_GPT_SPLIT = "GPT -> "
     }
 
-    private val list: List<String> = mutableListOf(
-        "Андреев Р.Н.",
-        "Салимова П.В.",
-        "Кетов А.А.",
-        "Колышкин Ю.А.",
-        "Кузаев Р.Р.",
-        "Маркин К.А.",
-        "Сидякин И.О.",
-        "Тебеньков В.А.",
-        "Забрудский А.В."
+    private val list: Map<String, Boolean> = mutableMapOf(
+            Pair("Андреев Р.Н.", false),
+            Pair("Салимова П.В.", false),
+            Pair("Кетов А.А.", false),
+            Pair("Колышкин Ю.А.", false),
+            Pair("Кузаев Р.Р.", true),
+            Pair("Маркин К.А.", true),
+            Pair("Сидякин И.О.", false),
+            Pair("Тебеньков В.А.", true),
+            Pair("Забрудский А.В.", false)
     )
 
     @Throws(IOException::class, InterruptedException::class)
@@ -52,12 +52,12 @@ class MessageService (
         val response = studyScheduleClient.getTimetableOfClasses(date, endDate)
         if (response.isSuccessful) {
             val gson = GsonBuilder()
-                .setPrettyPrinting()
-                .create()
+                    .setPrettyPrinting()
+                    .create()
 
             return try {
                 val schedules = gson.fromJson<List<ScheduleDTO>>(response.body?.string(),
-                    object : TypeToken<List<ScheduleDTO>>() {}.type
+                        object : TypeToken<List<ScheduleDTO>>() {}.type
                 )
 
                 formatMessage(schedules)
@@ -80,18 +80,18 @@ class MessageService (
     }
 
     fun getListGroup(): String {
-        val newList = list.sorted();
+        val newList = list.entries.map { entry -> entry.key + if (entry.value) " - Сдает ГОСы" else " - След год" }.sorted()
         return "***Список группы: ***\n" +
                 IntStream.range(0, newList.size)
-                    .mapToObj { i: Int ->
-                        (i + 1).toString() + ") " + newList[i] + "\n"
-                    }.collect(Collectors.joining());
+                        .mapToObj { i: Int ->
+                            (i + 1).toString() + ") " + newList[i] + "\n"
+                        }.collect(Collectors.joining());
     }
 
     fun getAnswerGPTMessage(message: String): String {
         return gptClient.getAnswerGPT(
                 message
-            )
+        )
     }
 
     fun sendFileToNextcloud(file: File, fileName: String) {
