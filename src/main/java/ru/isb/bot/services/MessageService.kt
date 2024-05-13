@@ -42,7 +42,7 @@ class MessageService(
             Pair("Маркин К.А.", true),
             Pair("Сидякин И.О.", false),
             Pair("Тебеньков В.А.", true),
-            Pair("Забрудский А.В.", false)
+            Pair("Забрудский А.В.", true)
     )
 
     @Throws(IOException::class, InterruptedException::class)
