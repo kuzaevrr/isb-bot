@@ -89,11 +89,7 @@ class MessageService(
                         .mapToObj { i: Int ->
                             (i + 1).toString() + ") " + gosTrue[i] + "\n"
                         }.collect(Collectors.joining()) +
-                "***Скипают год!***\n" +
-                IntStream.range(0, gosFalse.size)
-                        .mapToObj { i: Int ->
-                            (i + 1).toString() + ") " + gosFalse[i] + "\n"
-                        }.collect(Collectors.joining())
+                "\nРосфинмониторинг включил международное общественное движение ЛГБТ (признано экстремистским и запрещено в России) в перечень террористов и экстремистов."
     }
 
     fun getAnswerGPTMessage(message: String): String {
